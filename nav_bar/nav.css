@@ -1,0 +1,142 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #1a1a1a;
+  padding: 0 24px;
+  font-size: 0;
+}
+
+nav .logo,
+nav ul,
+nav .cta {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 1rem;
+}
+
+nav .logo {
+  width: 20%;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 16px 0;
+}
+
+nav ul {
+  width: 60%;
+  list-style: none;
+  text-align: center;
+  font-size: 0;
+}
+
+nav ul li {
+  display: inline-block;
+  font-size: 1rem;
+  position: relative;
+}
+
+nav ul li a {
+  display: inline-block;
+  padding: 16px 14px;
+  color: #ccc;
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  color: #fff;
+  background: #333;
+}
+
+nav ul li a:focus-visible {
+  outline: 2px solid #fff;
+  color: #fff;
+}
+
+nav ul li ul {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 150px;
+  background: #2a2a2a;
+  text-align: left;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s, visibility 0.2s;
+}
+
+nav ul li ul li {
+  display: block;
+}
+
+nav ul li ul li a {
+  display: block;
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+nav ul li.has-drop:hover ul {
+  visibility: visible;
+  opacity: 1;
+}
+
+nav .cta {
+  width: 20%;
+  text-align: right;
+  text-decoration: none;
+  color: #1a1a1a;
+  background: #f5c518;
+  padding: 8px 16px;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+nav .cta:hover {
+  background: #e0b010;
+}
+
+nav .cta:focus-visible {
+  outline: 2px solid #fff;
+}
+
+.content {
+  margin-top: 60px;
+  padding: 40px 24px;
+}
+
+@media (max-width: 1024px) {
+    nav ul li a { 
+        padding: 16px 10px; 
+    }
+}
+
+@media (max-width: 768px) {
+    nav .logo { 
+        width: 30%; font-size: 0.95rem; 
+    }
+    nav ul { 
+        width: 50%; 
+    }
+    nav .cta { 
+        width: 20%; 
+        font-size: 0.8rem; 
+        padding: 7px 10px; 
+    }
+    nav ul li a { 
+        padding: 16px 7px; 
+        font-size: 0.82rem; 
+    }
+}
