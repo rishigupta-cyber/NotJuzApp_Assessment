@@ -81,21 +81,97 @@ A fixed navigation bar with a hover-triggered dropdown menu, built with HTML and
 - Used margin-top: 60px on content to offset the fixed nav height
 
 
-# Day 5 assessment - The Local Restaurant Website
-A complete restaurant homepage built with HTML and CSS only.
+# Day 5 assessment — The Local Restaurant Website
 
-## What's included
+A complete restaurant homepage for **Spice & Stone** built with HTML and CSS only.
 
-- Hero section with restaurant image
+## What's Included
+
+- Hero section with restaurant banner image
 - Featured dishes section using inline-block card layout
-- About us section
+- About us section with centered image and description
 - Opening hours using HTML table
-- Book a table section
-- Footer with address and phone number
+- Book a table section with anchor link from nav
+- Footer with address and phone number using `<address>` element
 
-## CSS decisions
+## CSS Decisions
 
 - Used inline-block for dish cards layout
-- Used float for about section image and text
-- Used border-collapse for clean table borders
-- Warm color theme using saddlebrown, wheat and antiquewhite
+- Used `text-align: center` and `margin: 0 auto` for the about section layout
+- Used `border-collapse: collapse` for clean table borders
+- Warm color theme using `saddlebrown`, `wheat`, and `antiquewhite`
+- Serif font stack (Cambria, Georgia, Times New Roman) for a traditional restaurant feel
+
+## What I Would Improve
+
+- Replace `<div>` with semantic elements like `<nav>`, `<header>`, `<section>`, and `<main>`
+- Move the "Book a Table" button inside the hero banner — that is the standard pattern for restaurant websites
+- Remove the dead `.hero a` CSS rule — there is no anchor inside the hero section in the HTML
+- Convert all `font-size` pixel values to rem units for better accessibility
+
+
+# Day 6 assessment — CSS Audit and Refactor
+
+## What I Did
+
+This is a full audit and refactor of my Day 5 CSS file for a restaurant webpage. I made five targeted improvements to make the stylesheet cleaner, more maintainable, and more accessible.
+
+---
+
+## Changes Made
+
+### 1. Universal Box-Sizing Reset
+Added `*, *::before, *::after { box-sizing: border-box; }` at the very top of the file. This ensures padding and borders are included inside an element's total width and height, preventing unexpected overflow across all sections.
+
+### 2. Converted Font Sizes from px to rem
+Replaced every `font-size` pixel value with rem units, using 16px as the base. For example, `48px` became `3rem`, `32px` became `2rem`, and `18px` became `1.125rem`. This makes typography scale correctly with the user's browser font settings.
+
+### 3. Class Selectors Only — No ID Selectors
+The stylesheet uses only class selectors throughout (`.nav`, `.hero`, `.card`, etc.). No ID selectors are used. Class selectors have lower specificity than IDs, making styles easier to override and reuse without specificity conflicts.
+
+### 4. Specificity Conflict Resolved
+`.nav a` and `.hero a` both style anchor elements but are scoped to their own parent classes. This means neither rule accidentally overrides the other. No `!important` was needed — proper selector scoping was enough to resolve the conflict.
+
+### 5. Added :focus-visible to Interactive Elements
+Added `:focus-visible` styles to every interactive element:
+- `.nav a` — white outline for nav links
+- `.hero a` — white outline for the hero CTA
+- `.booking input`, `.booking textarea`, `.booking select` — darkorange outline
+- `.booking button` — white outline
+
+This improves keyboard accessibility without affecting mouse users.
+
+---
+
+## Color Palette
+| Color | Used For |
+|---|---|
+| `antiquewhite` | Page background, about section |
+| `saddlebrown` | Navbar, hero, booking section, table header |
+| `darkorange` | Buttons and CTAs |
+| `wheat` | Dishes and hours sections |
+| `brown` | Body text, footer background |
+
+---
+
+## Font Stack
+```
+Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+```
+A warm serif stack chosen to match the traditional, classic feel of a restaurant website. Multiple fallbacks ensure consistent rendering across all browsers and operating systems.
+
+---
+
+## Base Font Size Assumption
+All rem conversions are based on the browser default of **16px = 1rem**.
+
+---
+
+## Sections Styled
+- Navigation bar
+- Hero banner
+- Dishes / menu cards
+- About section
+- Opening hours table
+- Booking section
+- Footer
