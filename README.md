@@ -1,8 +1,8 @@
 # NotJuzApp_Assessment
 
 
-# Build a Semantic HTML Page Skeleton
-Day 1 assessment - A multi-section news homepage built with semantic HTML only, no CSS or JavaScript.
+# Day 1 assessment - Build a Semantic HTML Page Skeleton
+A multi-section news homepage built with semantic HTML only, no CSS or JavaScript.
 
 ## What's included
 
@@ -23,8 +23,8 @@ Day 1 assessment - A multi-section news homepage built with semantic HTML only, 
 - Nav links are wrapped in `<ul>` because a list of links is semantically a list
 
 
-# Map the Browser Journey
-Day 2 task - Documenting network requests and the full request-response flow using Chrome DevTools on Wikipedia.
+# Day 2 assessment - Map the Browser Journey
+Documenting network requests and the full request-response flow using Chrome DevTools on Wikipedia.
 
 ## What I documented
 
@@ -42,8 +42,8 @@ Day 2 task - Documenting network requests and the full request-response flow usi
 - Layout calculates positions, paint draws pixels and page appears
 
 
-# Build a Data Table in HTML
-Day 3 assessment - A fully semantic HTML data table comparing three high-end smartphones built with HTML only, no CSS, no JavaScript.
+# Day 3 assessment - Build a Data Table in HTML
+A fully semantic HTML data table comparing three high-end smartphones built with HTML only, no CSS, no JavaScript.
 
 ## What's included
 
@@ -61,8 +61,8 @@ Day 3 assessment - A fully semantic HTML data table comparing three high-end sma
 - Used `border="1"` as an HTML attribute instead of CSS to keep styling out of the file completely
 
 
-# Create a Navigation Bar
-Day 4 assessment - A fixed navigation bar with a hover-triggered dropdown menu, built with HTML and CSS only.
+# Day 4 assessment - Create a Navigation Bar
+A fixed navigation bar with a hover-triggered dropdown menu, built with HTML and CSS only.
 
 ## What's included
 
@@ -81,8 +81,8 @@ Day 4 assessment - A fixed navigation bar with a hover-triggered dropdown menu, 
 - Used margin-top: 60px on content to offset the fixed nav height
 
 
-# The Local Restaurant Website
-Day 5 assessment - A complete restaurant homepage built with HTML and CSS only.
+# Day 5 assessment - The Local Restaurant Website
+A complete restaurant homepage built with HTML and CSS only.
 
 ## What's included
 
