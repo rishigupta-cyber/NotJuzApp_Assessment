@@ -140,3 +140,38 @@ A full audit and refactor of the Day 5 CSS file for the Spice & Stone restaurant
 =======
 * Use `rem` for spacing values (padding, margin) as well — right now only font sizes were converted
 >>>>>>> Stashed changes
+
+
+# Day 7 Assessment — Rebuild the Navbar with Flexbox
+
+A full rebuild of the Day 4 navigation bar using CSS Flexbox, replacing all `inline-block`, `font-size: 0`, and `vertical-align` hacks with a clean flex implementation. The visual result is identical — logo left, links centre, CTA right — but the layout is now handled entirely through `display: flex`.
+
+## What's Included
+
+* `display: flex` on the `nav` container replacing all `inline-block` and `font-size: 0` hacks
+* `justify-content: space-between` and `align-items: center` on nav for axis alignment
+* `flex-grow`, `flex-shrink`, and `flex-basis` applied to the top-level `ul` for the links area
+* `flex-shrink: 0` on `.logo` and `.cta` so they never compress
+* `nav > ul` direct child selector so flex rules never bleed into the dropdown
+* `display: block` on the dropdown `ul` so items always stack vertically
+* CSS comment next to every flex property explaining what it controls in this layout
+* Single media query at `600px` for a vertical stacked mobile layout — no JavaScript used
+
+## CSS Decisions
+
+* Used `display: flex` on `nav` so logo, links, and CTA sit in a row naturally — no width hacks or whitespace fixes needed like the old `font-size: 0` trick from Day 4
+* Used `justify-content: space-between` on `nav` to push `.logo` to the far left and `.cta` to the far right without hardcoding any widths
+* Used `align-items: center` on `nav` to vertically centre all three sections — replaces the old `vertical-align: middle` approach
+* Applied `flex-grow: 1`, `flex-shrink: 1`, `flex-basis: 0` on `nav > ul` so the links area takes all remaining space between logo and CTA and starts growing from zero, not from its content size
+* Used `justify-content: center` on `nav > ul` to centre the links inside that available space
+* Used `flex-shrink: 0` on both `.logo` and `.cta` so they hold their size when the viewport gets narrow
+* Used `nav > ul` instead of `nav ul` throughout so flex only targets the top-level links row and the dropdown is completely isolated
+* Added `display: block` on `nav > ul > li > ul` so dropdown items always stack vertically regardless of any flex inherited from the parent
+* Media query at `600px` switches `flex-direction: column` on both `nav` and `nav > ul` so everything stacks cleanly on mobile with no JavaScript needed
+
+## What I Would Improve
+
+* Add a JavaScript hamburger toggle for mobile so the links are hidden by default and shown on tap — right now they just stack which works but is not ideal for a real mobile nav
+* Use `gap` on the flex container instead of padding on individual `li a` elements for cleaner spacing control
+* Add CSS custom properties at the top for repeated values like `gold`, `dimgray`, and `darkslategray` so they are easy to update from one place
+* Add `transition` to the mobile layout so the direction change feels smooth instead of a hard snap
