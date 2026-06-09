@@ -110,68 +110,29 @@ A complete restaurant homepage for **Spice & Stone** built with HTML and CSS onl
 - Convert all `font-size` pixel values to rem units for better accessibility
 
 
-# Day 6 assessment — CSS Audit and Refactor
+# Day 6 Assessment — CSS Audit and Refactor
 
-## What I Did
+A full audit and refactor of the Day 5 CSS file for the Spice & Stone restaurant webpage, with five targeted improvements for cleaner code, better maintainability, and improved accessibility.
 
-This is a full audit and refactor of my Day 5 CSS file for a restaurant webpage. I made five targeted improvements to make the stylesheet cleaner, more maintainable, and more accessible.
+## What's Included
 
----
+* Universal box-sizing reset using `*, *::before, *::after`
+* All font sizes converted from px to rem units
+* Class-only selector strategy — no ID selectors used
+* Specificity conflict resolved between `.nav a` and `.hero a`
+* `:focus-visible` added to all interactive elements
 
-## Changes Made
+## CSS Decisions
 
-### 1. Universal Box-Sizing Reset
-Added `*, *::before, *::after { box-sizing: border-box; }` at the very top of the file. This ensures padding and borders are included inside an element's total width and height, preventing unexpected overflow across all sections.
+* Used `box-sizing: border-box` globally so padding and borders are included inside element dimensions, preventing overflow
+* Converted every `font-size` pixel value to rem using 16px as the base — `48px` → `3rem`, `32px` → `2rem`, `18px` → `1.125rem`
+* Used only class selectors (`.nav`, `.hero`, `.card`, etc.) throughout — class specificity is lower than ID, so styles stay easy to override and reuse
+* Scoped `.nav a` and `.hero a` to their parent classes so neither rule bleeds into the other — no `!important` needed
+* Added `:focus-visible` to `.nav a`, `.hero a`, `.booking input`, `.booking textarea`, `.booking select`, and `.booking button` for keyboard accessibility without affecting mouse users
 
-### 2. Converted Font Sizes from px to rem
-Replaced every `font-size` pixel value with rem units, using 16px as the base. For example, `48px` became `3rem`, `32px` became `2rem`, and `18px` became `1.125rem`. This makes typography scale correctly with the user's browser font settings.
+## What I Would Improve
 
-### 3. Class Selectors Only — No ID Selectors
-The stylesheet uses only class selectors throughout (`.nav`, `.hero`, `.card`, etc.). No ID selectors are used. Class selectors have lower specificity than IDs, making styles easier to override and reuse without specificity conflicts.
-
-### 4. Specificity Conflict Resolved
-`.nav a` and `.hero a` both style anchor elements but are scoped to their own parent classes. This means neither rule accidentally overrides the other. No `!important` was needed — proper selector scoping was enough to resolve the conflict.
-
-### 5. Added :focus-visible to Interactive Elements
-Added `:focus-visible` styles to every interactive element:
-- `.nav a` — white outline for nav links
-- `.hero a` — white outline for the hero CTA
-- `.booking input`, `.booking textarea`, `.booking select` — darkorange outline
-- `.booking button` — white outline
-
-This improves keyboard accessibility without affecting mouse users.
-
----
-
-## Color Palette
-| Color | Used For |
-|---|---|
-| `antiquewhite` | Page background, about section |
-| `saddlebrown` | Navbar, hero, booking section, table header |
-| `darkorange` | Buttons and CTAs |
-| `wheat` | Dishes and hours sections |
-| `brown` | Body text, footer background |
-
----
-
-## Font Stack
-```
-Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
-```
-A warm serif stack chosen to match the traditional, classic feel of a restaurant website. Multiple fallbacks ensure consistent rendering across all browsers and operating systems.
-
----
-
-## Base Font Size Assumption
-All rem conversions are based on the browser default of **16px = 1rem**.
-
----
-
-## Sections Styled
-- Navigation bar
-- Hero banner
-- Dishes / menu cards
-- About section
-- Opening hours table
-- Booking section
-- Footer
+* Add a CSS custom properties block at the top for colors like `saddlebrown`, `darkorange`, and `wheat` — right now they are repeated across many rules
+* Extract the shared button styles from `.nav a` and `.hero a` into a single reusable `.btn` class
+* Add `transition` to focus and hover states so the outline and background changes feel smoother
+* Use `rem` for spacing values (padding, margin) as well — right now only font sizes were converted
