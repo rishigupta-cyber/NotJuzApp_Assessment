@@ -135,4 +135,8 @@ A full audit and refactor of the Day 5 CSS file for the Spice & Stone restaurant
 * Add a CSS custom properties block at the top for colors like `saddlebrown`, `darkorange`, and `wheat` — right now they are repeated across many rules
 * Extract the shared button styles from `.nav a` and `.hero a` into a single reusable `.btn` class
 * Add `transition` to focus and hover states so the outline and background changes feel smoother
+<<<<<<< Updated upstream
 * Use `rem` for spacing values (padding, margin) as well — right now only font sizes were converted
+=======
+* Use `rem` for spacing values (padding, margin) as well — right now only font sizes were converted
+>>>>>>> Stashed changes

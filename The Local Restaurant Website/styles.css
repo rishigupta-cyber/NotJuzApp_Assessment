@@ -1,158 +1,218 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 body {
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: cursive;
     margin: 0;
     padding: 0;
-    background-color: antiquewhite;
-    color: brown;
+    background-color: linen;
+    color: sienna;
 }
 
 .nav {
     text-align: right;
-    padding: 12px 24px;
+    padding: 0.75rem 1.5rem;
     background-color: saddlebrown;
 }
 
 .nav a {
     background-color: darkorange;
     color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    font-size: 16px;
+    padding: 0.625rem 1.25rem;
+    text-decoration: underline;
+    font-size: 1rem;
     display: inline-block;
-    margin-top: 3px;
+    margin-top: 0.1875rem;
+}
+
+.nav a:focus-visible {
+    outline: 3px solid white;
+    outline-offset: 2px;
 }
 
 .hero {
     text-align: center;
-    padding: 20px 20px;
-    background-color: saddlebrown;
+    padding: 0.3125rem;
+    background-color: chocolate;
     color: white;
 }
 
 .hero img {
-    width: 100%;
-    height: 600px;
+    width: 95%;
+    height: 32.5rem;
     object-fit: cover;
+    display: inline-block;
 }
 
 .hero h1 {
-    font-size: 48px;
-    margin-bottom: 10px;
+    font-size: 3.125rem;
+    margin: 0.3125rem 0 1.25rem 0;
+    background-color: darkorange;
 }
 
 .hero p {
-    font-size: 18px;
-    margin-bottom: 20px;
-}
-
-.hero a {
-    background-color: darkorange;
-    color: white;
-    padding: 12px 24px;
-    text-decoration: none;
+    font-size: 1.125rem;
+    margin: 0.125rem 0 1.25rem 0;
+    font-style: italic;
 }
 
 .dishes {
     text-align: center;
-    padding: 40px 20px;
-    background-color: wheat;
+    padding: 3.125rem 1.25rem;
+    background-color: oldlace;
 }
 
 .dishes h2 {
-    font-size: 32px;
-    margin-bottom: 30px;
+    font-size: 2.125rem;
+    margin-bottom: 1.875rem;
 }
 
 .card {
     display: inline-block;
-    width: 200px;
-    margin: 10px;
+    width: 19.4375rem;
+    margin: 1.4375rem;
     background-color: white;
-    padding: 10px;
     vertical-align: top;
+    box-shadow: 0 2px 6px tan;
+}
+
+.card:hover {
+    box-shadow: 0 4px 14px peru;
 }
 
 .card img {
     width: 100%;
-    height: 150px;
+    height: 10rem;
     object-fit: cover;
+    display: block;
 }
 
-.card h3 {
-    font-size: 16px;
-    margin: 8px 0;
+.card-body {
+    padding: 0.75rem;
 }
 
-.card p {
-    margin: 4px 0;
-    color: saddlebrown;
+.card-body h3 {
+    font-size: 1rem;
+    margin: 0 0 0.375rem 0;
+}
+
+.card-body .category {
+    color: gray;
+    font-size: 0.8125rem;
+    margin: 0 0 0.25rem 0;
+}
+
+.card-body .price {
+    color: chocolate;
+    font-weight: bold;
+    font-size: 0.9375rem;
+    margin: 0;
 }
 
 .about {
-    padding: 40px 20px;
-    background-color: antiquewhite;
-    text-align: center;
-}
-
-.about h2 {
-    font-size: 32px;
+    padding: 3.125rem 2.5rem;
+    background-color: linen;
+    overflow: hidden;
 }
 
 .about img {
-    width: 400px;
-    height: 250px;
+    width: 28.5rem;
+    height: 16.875rem;
     object-fit: cover;
-    margin: 20px 0;
+    float: left;
+    margin-right: 6.25rem;
 }
 
-.about p {
-    font-size: 16px;
-    max-width: 600px;
-    margin: 0 auto;
+.about-text h2 {
+    font-size: 2rem;
+    margin-top: 0;
+}
+
+.about-text p {
+    font-size: 1rem;
+    line-height: 1.8;
 }
 
 .hours {
-    padding: 40px 20px;
-    background-color: wheat;
+    padding: 3.125rem 1.25rem;
+    background-color: oldlace;
     text-align: center;
 }
 
 .hours h2 {
-    font-size: 32px;
-    margin-bottom: 20px;
+    font-size: 2.125rem;
+    margin-bottom: 1.25rem;
 }
 
 table {
     margin: 0 auto;
-    border-collapse: collapse;
-    width: 400px;
+    border-collapse: separate;
+    width: 50rem;
 }
 
 th, td {
-    border: 1px solid saddlebrown;
-    padding: 10px 20px;
+    border: 1px solid chocolate;
+    padding: 0.75rem 1.5rem;
     text-align: left;
 }
 
 th {
-    background-color: saddlebrown;
+    background-color: chocolate;
     color: white;
 }
 
+tr:nth-child(even) {
+    background-color: linen;
+}
+
 .booking {
-    padding: 40px 20px;
-    background-color: saddlebrown;
+    padding: 3.125rem 1.25rem;
+    background-color: chocolate;
     color: white;
     text-align: center;
 }
 
 .booking h2 {
-    font-size: 32px;
+    font-size: 2.125rem;
+    margin-bottom: 0.625rem;
+}
+
+.booking a {
+    display: inline-block;
+    margin-top: 1rem;
+    background-color: darkorange;
+    color: white;
+    padding: 0.75rem 1.75rem;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.booking a:focus-visible {
+    outline: 3px solid white;
+    outline-offset: 3px;
+}
+
+.booking input:focus-visible,
+.booking textarea:focus-visible,
+.booking select:focus-visible {
+    outline: 3px solid darkorange;
+    outline-offset: 2px;
+}
+
+.booking button:focus-visible {
+    outline: 3px solid white;
+    outline-offset: 2px;
 }
 
 footer {
-    background-color: brown;
+    background-color: sienna;
     color: white;
     text-align: center;
-    padding: 20px;
+    padding: 1.5rem;
+    line-height: 1.8;
+}
+
+footer address {
+    font-style: normal;
 }
