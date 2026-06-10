@@ -175,3 +175,44 @@ A full rebuild of the Day 4 navigation bar using CSS Flexbox, replacing all `inl
 * Use `gap` on the flex container instead of padding on individual `li a` elements for cleaner spacing control
 * Add CSS custom properties at the top for repeated values like `gold`, `dimgray`, and `darkslategray` so they are easy to update from one place
 * Add `transition` to the mobile layout so the direction change feels smooth instead of a hard snap
+
+
+# Day 8 Assessment — Build a Card Grid with Flexbox
+
+A responsive product card grid built with HTML and CSS Flexbox. Six product cards are displayed in a wrapping grid that adjusts its column count based on viewport width — three columns at 1200px, two at 768px, and one at 375px — using `flex-wrap` and `flex-basis` only, with no media queries or CSS Grid.
+
+## What's Included
+
+- Six product cards each showing an image, product name, short description, price, and an Add to Cart button
+- `display: flex` and `flex-wrap: wrap` on the `.grid` container so cards wrap into rows automatically
+- `flex: 1 1 280px` on each `.item` so cards grow, shrink, and start from a 280px base width
+- `align-items: flex-start` on the grid so rows do not stretch cards to match the tallest in the row
+- `align-content: flex-start` on the grid so rows pack toward the top instead of spreading across the container
+- `box-shadow` on each card for a polished, lifted appearance
+- `object-fit: cover` on images so they crop cleanly without distorting
+- A hover state on the Add to Cart button that darkens the background colour
+
+## HTML Decisions
+
+- Used a flat list of `div.item` elements inside `div.grid` — no nested wrappers — because each card only needs one flex child level
+- Used `<h3>` for product names since the page already has an `<h1>` heading, keeping the heading hierarchy correct
+- Used Unsplash URLs with fixed `w=400&h=250&fit=crop` parameters so every image arrives at the same dimensions before CSS applies `object-fit`
+- Kept the price in its own `<p class="price">` rather than inside the description paragraph so it can be styled independently without specificity conflicts
+
+## CSS Decisions
+
+- Used `flex: 1 1 280px` shorthand on `.item` — `flex-grow: 1` lets cards expand to fill row space, `flex-shrink: 1` lets them compress below 280px if needed, and `flex-basis: 280px` sets the starting width from which the browser calculates how many fit per row
+- Used `align-items: flex-start` instead of the default `stretch` so shorter cards do not get forced to the height of the tallest card in the same row
+- Used `align-content: flex-start` so when cards wrap into multiple rows the rows stay compact at the top rather than spreading to fill the container height
+- Used `gap: 20px` on the grid instead of margins on individual cards to control spacing — gap does not add space on the outer edges, avoiding the need for negative margins
+- Used `max-width: 1300px` with `margin: 0 auto` on the grid so the layout stays centred and does not stretch too wide on large screens
+- Used `object-fit: cover` with a fixed `height: 200px` on `.item img` so all product images are the same height regardless of their original aspect ratio
+- Used `display: block` on `.btn` with `margin: 12px` so the button sits on its own line inside the card with even spacing on all sides
+- Used `rem` units for all font sizes — `1.1rem` for product names, `0.9rem` for descriptions and the button, `1rem` for prices — so sizes scale with the user's browser font preference
+
+## What I Would Improve
+
+- Add `:focus-visible` to the `.btn` element for keyboard accessibility — right now only the hover state is handled
+- Add `transition` to the `.btn` hover so the background colour change feels smooth rather than instant
+- Replace the hardcoded colour names `steelblue`, `royalblue`, `tomato`, and `darkslategray` with CSS custom properties at the top of the file so the colour scheme is easy to update from one place
+- Add `font-size: rem` to spacing values (padding, margin) as well — right now only font sizes use rem
