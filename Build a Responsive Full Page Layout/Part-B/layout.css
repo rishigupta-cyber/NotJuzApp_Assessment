@@ -1,0 +1,222 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: lightgray;
+    font-family: Georgia, serif;
+    color: darkslategray;
+}
+
+/* outer wrapper — flex column stacks header, content-area, and footer vertically */
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* --- HEADER --- */
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: midnightblue;
+    color: white;
+    padding: 18px 40px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.subscribe-btn {
+    padding: 8px 18px;
+    background-color: white;
+    color: midnightblue;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.subscribe-btn:hover {
+    background-color: ghostwhite;
+}
+
+.subscribe-btn:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 3px;
+}
+
+/* --- CONTENT AREA --- */
+/* flex row puts sidebar on the left and main on the right */
+.content-area {
+    display: flex;
+    flex-direction: row;
+    flex: 1;  /* fills all vertical space between header and footer */
+}
+
+/* --- SIDEBAR --- */
+/* fixed 280px width, sidebar stretches full height of content-area automatically */
+.sidebar {
+    display: flex;
+    flex-direction: column;  /* stacks label, nav links, trending section vertically */
+    width: 280px;
+    flex-shrink: 0;          /* sidebar never shrinks even when screen gets smaller */
+    background-color: white;
+    padding: 30px 20px;
+    border-right: 1px solid gainsboro;
+}
+
+.sidebar-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: gray;
+    margin-bottom: 14px;
+}
+
+.trending-label {
+    margin-top: 36px;
+}
+
+/* vertical nav using flex column with consistent gap between each link */
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sidebar-nav a {
+    text-decoration: none;
+    color: darkslategray;
+    font-size: 0.95rem;
+    font-family: Arial, sans-serif;
+    padding: 4px 0;
+    border-bottom: 1px solid gainsboro;
+}
+
+.sidebar-nav a:hover {
+    color: midnightblue;
+}
+
+.sidebar-nav a:focus-visible {
+    outline: 2px solid midnightblue;
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+.trending-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.trending-list li {
+    font-size: 0.88rem;
+    font-family: Arial, sans-serif;
+    color: gray;
+    line-height: 1.4;
+    padding-bottom: 12px;
+    border-bottom: 1px solid gainsboro;
+}
+
+/* --- MAIN CONTENT --- */
+/* flex: 1 makes main fill all remaining width after the 280px sidebar */
+.main-content {
+    flex: 1;
+    padding: 30px;
+    background-color: ghostwhite;
+}
+
+.section-title {
+    font-size: 1.2rem;
+    color: darkslategray;
+    margin-bottom: 24px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid midnightblue;
+    font-family: Arial, sans-serif;
+}
+
+/* article cards laid out in a horizontal row using flex */
+.articles-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;  /* tag, title, description, link stack top to bottom */
+    flex: 1 1 200px;
+    background-color: white;
+    border-radius: 6px;
+    padding: 20px;
+    box-shadow: 1px 1px 6px gainsboro;
+}
+
+.tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-family: Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: midnightblue;
+    background-color: lavender;
+    padding: 3px 8px;
+    border-radius: 3px;
+    margin-bottom: 12px;
+    align-self: flex-start;
+}
+
+.card h3 {
+    font-size: 1rem;
+    color: darkslategray;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 0.88rem;
+    font-family: Arial, sans-serif;
+    color: gray;
+    line-height: 1.6;
+    flex: 1;  /* pushes read-link to the bottom of the card */
+}
+
+.read-link {
+    display: inline-block;
+    margin-top: 14px;
+    font-size: 0.85rem;
+    font-family: Arial, sans-serif;
+    color: midnightblue;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.read-link:hover {
+    text-decoration: underline;
+}
+
+.read-link:focus-visible {
+    outline: 2px solid midnightblue;
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+/* --- FOOTER --- */
+.site-footer {
+    background-color: midnightblue;
+    color: lightgray;
+    text-align: center;
+    padding: 20px 40px;
+    font-size: 0.85rem;
+    font-family: Arial, sans-serif;
+}
