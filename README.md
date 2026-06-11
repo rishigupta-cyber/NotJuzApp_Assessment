@@ -1,5 +1,5 @@
 # NotJuzApp_Assessment
-
+ 
 
 # Day 1 assessment - Build a Semantic HTML Page Skeleton
 A multi-section news homepage built with semantic HTML only, no CSS or JavaScript.
@@ -212,3 +212,85 @@ A responsive product card grid built with HTML and CSS Flexbox. Six product card
 - Add `transition` to the `.btn` hover so the background colour change feels smooth rather than instant
 - Replace the hardcoded colour names `steelblue`, `royalblue`, `tomato`, and `darkslategray` with CSS custom properties at the top of the file so the colour scheme is easy to update from one place
 - Add `font-size: rem` to spacing values (padding, margin) as well — right now only font sizes use rem
+
+
+# Day 9 Part A Assessment — Responsive Card Grid with Sticky Header
+
+An updated version of the Day 8 product card grid with full responsiveness added using CSS media queries and a sticky header that stays visible while scrolling. Three breakpoints control the column layout, and each card's internal structure switches from a column to a row on mobile so the image sits beside the text instead of above it.
+
+## What's Included
+
+- Sticky header using `position: sticky` and `top: 0` so it stays at the top of the viewport on all screen sizes
+- Three-column layout at 1200px and above using `flex: 1 1 300px` on each card
+- Two-column layout between 600px and 1199px using `flex: 1 1 calc(50% - 10px)`
+- One-column layout below 600px where each card takes `flex: 1 1 100%`
+- Card internal layout switches to `flex-direction: row` on mobile so the image sits on the left and text on the right
+- `div.item-body` wrapper added inside each card so the text block behaves as a single flex child on mobile
+- `focus-visible` outline on nav links and the Add to Cart button for keyboard accessibility
+- No `!important` used anywhere — specificity conflicts resolved through selector structure
+
+## HTML Decisions
+
+- Added `<header class="site-header">` with a logo and three nav links as a real landmark element instead of a plain div
+- Wrapped all card text content in `<div class="item-body">` so on mobile the image and the entire text block sit side by side as two flex children rather than the image competing with individual paragraphs
+- Kept the same six product cards and Unsplash image URLs from Day 8 — only structure changed, not content
+
+## CSS Decisions
+
+- Used `position: sticky` with `top: 0` and `z-index: 100` on the header so it stays at the top while scrolling without taking the page out of document flow the way `position: fixed` would
+- Used `flex: 1 1 300px` on desktop so three cards fit naturally in a 1300px container with two 20px gaps — no hardcoded widths needed
+- Used `calc(50% - 10px)` as the flex-basis at tablet width so two cards fill the row exactly accounting for the 20px gap between them
+- Used `flex-direction: row` on `.item` at mobile width so the image and text sit side by side — this is the nested flex-direction change the task asks for
+- Used `flex-shrink: 0` on the image at mobile width so it holds its 120px width even when the card is narrow and text is long
+- Used `margin-top: auto` on `.btn` inside `.item-body` so the button always sits at the bottom of the card regardless of how much text is above it
+- Used `.item-body .price` as the selector for the price colour so it is naturally more specific than `.item-body p` — no `!important` needed to override the gray set on paragraphs
+
+## What I Would Improve
+
+- Add `transition` to the button hover so the colour change is smooth instead of instant
+- Use CSS custom properties for repeated colour values like `steelblue`, `midnightblue`, and `tomato` so the palette is easy to update from one place
+- Add `font-size` and spacing values in `rem` consistently — a few padding values still use `px`
+- Consider making the sticky header collapse to just the logo on mobile to save vertical space\
+
+
+# Day 9 Part B Assessment — Full Page Layout with Flexbox
+
+A complete blog-style page layout built entirely with Flexbox for both the macro structure and the micro components inside it. The page has a fixed-width sidebar on the left, a fluid main content area on the right, and a header and footer that span the full width. No floats, no absolute positioning, and no CSS Grid used anywhere.
+
+## What's Included
+
+- Single outer `.page-wrapper` flex container that holds all four sections — header, content area, and footer — in a vertical column
+- `display: flex` on `.content-area` creating the sidebar and main content side by side in a horizontal row
+- Sidebar fixed at 280px width with `flex-shrink: 0` so it never compresses
+- Sidebar stretches to the full height of the content area automatically through flexbox's default `align-items: stretch`
+- Vertical nav inside the sidebar using `flex-direction: column` with consistent `gap` between links
+- Article preview cards in the main area laid out in a horizontal row using `flex-direction: row` and `flex-wrap: wrap`
+- `focus-visible` outlines on nav links, article read-more links, and the subscribe button for keyboard accessibility
+- All colour names used — no hex codes anywhere in the stylesheet
+
+## HTML Decisions
+
+- Used a single `div.page-wrapper` as the one outer container the task requires — all flex contexts are nested inside it
+- Used `<aside>` for the sidebar and `<main>` for the main content area as proper semantic HTML landmarks
+- Used `<article>` for each preview card since each one is a self-contained piece of content with its own heading and description
+- Added a trending section in the sidebar to make it feel like a real page rather than a bare wireframe
+- Gave each article card a topic tag so categories are visible at a glance
+
+## CSS Decisions
+
+- Used `display: flex` with `flex-direction: column` on `.page-wrapper` so header, content area, and footer stack vertically as a full-page layout
+- Used `flex: 1` on `.content-area` so it expands to fill all vertical space between the header and footer — this is what makes the sidebar stretch full height
+- Used `width: 280px` and `flex-shrink: 0` on `.sidebar` instead of `flex-basis` to set a truly fixed sidebar width that never changes regardless of available space
+- Used `flex: 1` on `.main-content` so it takes all horizontal space remaining after the sidebar's 280px — no width calculation needed
+- Used `display: flex` with `flex-direction: column` and `gap: 12px` on `.sidebar-nav` for consistent spacing between nav links without any margin on individual anchor tags
+- Used `flex: 1 1 200px` on `.card` so cards grow to fill the row and wrap naturally if the content area is narrow — the same wrapping approach from Part A applied at the micro level
+- Used `flex: 1` on `.card p` so the description paragraph expands to fill available card height and pushes the read-more link to the bottom of every card
+- Used `min-height: 100vh` on `.page-wrapper` so the footer always sits at the bottom even when there is not enough content to fill the screen
+
+## What I Would Improve
+
+- Add a media query so the sidebar collapses or hides on smaller screens — right now the layout works on desktop but gets tight below 768px
+- Use CSS custom properties for `midnightblue`, `darkslategray`, and `gainsboro` since they repeat many times across the file
+- Add a hover state on the trending list items so they feel interactive
+- Consider adding a subtle left border highlight on the active sidebar nav link to show the current page
+
