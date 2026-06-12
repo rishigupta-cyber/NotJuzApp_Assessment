@@ -294,3 +294,59 @@ A complete blog-style page layout built entirely with Flexbox for both the macro
 - Add a hover state on the trending list items so they feel interactive
 - Consider adding a subtle left border highlight on the active sidebar nav link to show the current page
 
+
+# Day 10 Assessment — The Startup Landing Page
+
+A complete marketing landing page for Orbit Analytics, a B2B SaaS company, built with HTML
+and CSS Flexbox throughout. The page covers a sticky nav, hero section, features, social
+proof, pricing, and footer, and is responsive across desktop, 768px, and 375px.
+
+# What's Included
+
+Sticky navbar using position: sticky that stays at the top while scrolling
+Hero section with a single h1 headline, supporting paragraph, and a "Request a Demo" CTA
+Features section with three cards, each with an icon, heading, and description
+Testimonials section with three customer quote cards
+Pricing section with three tiers in a row, the middle tier highlighted as Recommended
+Footer using <address> for company contact details
+:focus-visible outlines on every link and button across the page, not just the nav
+All colours written as named colours (royalblue, darkslategray, gainsboro, etc.) — no hex codes
+Two breakpoints: 768px for tablet and 480px for mobile
+
+# HTML Decisions
+
+Used <header>, <nav>, <section>, <footer>, <address>, and <article> instead of generic divs
+so the page structure is meaningful to browsers and assistive technologies
+Kept heading order strict — h1 for the hero, h2 once per section, h3 for individual
+card titles — so the document outline never skips a level
+Used <article> for each testimonial card since each one is a self-contained quote with
+its own author, similar to the article reasoning from Day 1 and Day 9 Part B
+Wrapped the pricing recommended tier in an extra class (.pricing-card--highlight) rather
+than a separate element, since it's still the same type of content, just styled differently
+
+# CSS Decisions
+
+Used display: flex with justify-content: space-between on the navbar so the logo sits at
+the left edge and the nav links + CTA sit at the right edge with space distributed evenly
+Used display: flex with flex-direction: column and align-items: center on the hero so the
+headline, paragraph, and CTA stack and stay centred regardless of screen width
+Used display: flex with flex-wrap: wrap and flex: 1 1 280px on the feature cards and
+testimonial cards, the same wrapping pattern from Day 8, so cards reflow into fewer
+columns as the viewport shrinks
+Used flex: 1 1 280px on the three pricing cards so they stay equal width on desktop, then
+switched to flex-direction: column at 768px so they stack vertically on tablet and mobile
+Used transform: scale(1.03) on the highlighted pricing card on desktop only, removing it
+in the 768px media query so it doesn't cause overflow issues on smaller screens
+Used display: flex with flex-wrap: wrap and justify-content: space-between on the footer
+so the logo, address, and copyright sit in a row on desktop and stack on mobile
+Replaced every hex colour with a named colour (royalblue, dimgray, whitesmoke, gainsboro,
+lightskyblue, etc.) so the palette reads clearly without needing a colour picker
+
+## What I Would Improve
+
+Add CSS custom properties for royalblue and darkslategray since they repeat across many
+sections — same improvement noted back in Day 7 and Day 9 Part B
+Add a real mobile nav toggle instead of hiding .nav-links completely below 768px
+Add transition on the pricing card hover and button hover states for a smoother feel
+Add alt-text-equivalent labels to the feature icons for screen readers, since they're
+currently just emoji with no aria-label
