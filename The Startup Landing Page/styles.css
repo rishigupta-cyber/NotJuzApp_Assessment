@@ -1,0 +1,384 @@
+/* ---------- Base setup ---------- */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: darkslategray;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  line-height: 1.2;
+}
+
+/* Focus state for keyboard users - applies to every link and button on the page */
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid royalblue;
+  outline-offset: 2px;
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.btn-primary {
+  background-color: royalblue;
+  color: white;
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: royalblue;
+  border: 2px solid royalblue;
+}
+
+/* ---------- Navbar ---------- */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  border-bottom: 1px solid gainsboro;
+  z-index: 100;
+}
+
+/* Flex row with space-between: pushes the logo to the left edge and the
+   links + CTA group to the right edge, with even space in the middle */
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: royalblue;
+  text-decoration: none;
+}
+
+/* Links grow and sit centered between logo and CTA */
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  flex: 1;
+  justify-content: center;
+}
+
+.nav-links a {
+  color: darkslategray;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  color: royalblue;
+}
+
+/* ---------- Hero ---------- */
+
+/* Column layout so headline, paragraph, and CTA stack centered on top of
+   each other regardless of screen width */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 5rem 1.5rem;
+  background-color: aliceblue;
+}
+
+.hero h1 {
+  font-size: 2.75rem;
+  max-width: 700px;
+}
+
+.hero-subtext {
+  max-width: 600px;
+  margin: 1.5rem 0 2rem;
+  color: dimgray;
+}
+
+/* ---------- Features ---------- */
+
+.features {
+  padding: 4rem 1.5rem;
+  text-align: center;
+}
+
+.features h2 {
+  margin-bottom: 2.5rem;
+  font-size: 2rem;
+}
+
+/* Row that wraps onto new lines once cards no longer fit. flex: 1 1 280px
+   lets each card grow/shrink but never go below 280px before wrapping */
+.features-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.feature-card {
+  flex: 1 1 280px;
+  background-color: white;
+  border: 1px solid gainsboro;
+  border-radius: 10px;
+  padding: 2rem;
+  text-align: left;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+}
+
+.feature-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.feature-card p {
+  color: dimgray;
+}
+
+/* ---------- Testimonials ---------- */
+
+.testimonials {
+  background-color: whitesmoke;
+  padding: 4rem 1.5rem;
+  text-align: center;
+}
+
+.testimonials h2 {
+  margin-bottom: 2.5rem;
+  font-size: 2rem;
+}
+
+/* Same wrapping row pattern as the features grid, so cards line up evenly
+   on desktop and stack on smaller screens */
+.testimonials-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.testimonial-card {
+  flex: 1 1 300px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 2rem;
+  text-align: left;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+}
+
+.testimonial-card .quote {
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.testimonial-card .author {
+  font-weight: 600;
+  color: dimgray;
+}
+
+/* ---------- Pricing ---------- */
+
+.pricing {
+  padding: 4rem 1.5rem;
+  text-align: center;
+}
+
+.pricing h2 {
+  margin-bottom: 2.5rem;
+  font-size: 2rem;
+}
+
+/* Three equal columns - flex: 1 with a shared basis keeps them the same
+   width while still letting them shrink together on tablet/mobile */
+.pricing-grid {
+  display: flex;
+  align-items: stretch;
+  gap: 2rem;
+  justify-content: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.pricing-card {
+  flex: 1 1 280px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid gainsboro;
+  border-radius: 10px;
+  padding: 2rem;
+}
+
+/* Highlighted middle tier stands out with a border, shadow, and slight scale */
+.pricing-card--highlight {
+  border: 2px solid royalblue;
+  box-shadow: 0 8px 20px rgba(65, 105, 225, 0.15);
+  transform: scale(1.03);
+}
+
+.badge {
+  align-self: flex-start;
+  background-color: royalblue;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  margin-bottom: 0.5rem;
+}
+
+.pricing-card h3 {
+  margin-bottom: 0.5rem;
+}
+
+.price {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.price span {
+  font-size: 1rem;
+  font-weight: 400;
+  color: gray;
+}
+
+.pricing-card ul {
+  list-style: none;
+  margin-bottom: 2rem;
+  flex-grow: 1;
+}
+
+.pricing-card li {
+  margin-bottom: 0.6rem;
+  color: dimgray;
+}
+
+.pricing-card li::before {
+  content: "✓ ";
+  color: royalblue;
+  font-weight: 700;
+}
+
+.pricing-card .btn {
+  align-self: stretch;
+  text-align: center;
+}
+
+/* ---------- Footer ---------- */
+
+.footer {
+  background-color: darkslategray;
+  color: lightgray;
+  padding: 2.5rem 1.5rem;
+}
+
+/* Row layout so logo, address, and copyright sit side by side on wide
+   screens, then drop into a column once space runs out */
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.footer .logo {
+  color: white;
+}
+
+.footer address {
+  font-style: normal;
+}
+
+.footer a {
+  color: lightskyblue;
+  text-decoration: none;
+}
+
+/* ---------- Tablet: 768px ---------- */
+
+@media (max-width: 768px) {
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero h1 {
+    font-size: 2.1rem;
+  }
+
+  /* Pricing collapses from a row of three into a stacked column */
+  .pricing-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pricing-card {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .pricing-card--highlight {
+    transform: none;
+    order: -1;
+  }
+}
+
+/* ---------- Mobile: 375px ---------- */
+
+@media (max-width: 480px) {
+
+  .nav-container {
+    padding: 1rem;
+  }
+
+  .hero {
+    padding: 3rem 1rem;
+  }
+
+  .hero h1 {
+    font-size: 1.7rem;
+  }
+
+  .features,
+  .testimonials,
+  .pricing {
+    padding: 3rem 1rem;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+}
