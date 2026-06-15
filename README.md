@@ -350,3 +350,61 @@ Add a real mobile nav toggle instead of hiding .nav-links completely below 768px
 Add transition on the pricing card hover and button hover states for a smoother feel
 Add alt-text-equivalent labels to the feature icons for screen readers, since they're
 currently just emoji with no aria-label
+
+
+# Day 11 Assessment — Build an Accessible Contact Form
+
+A fully accessible multi-field contact form built with HTML, CSS, and a small amount of
+JavaScript for the success message. Every field has a visible label, the checkbox is grouped
+with fieldset and legend, and the entire form is operable using only the keyboard.
+
+## What's Included
+
+- Full Name, Email, Subject (select with four options), Message (textarea), and a
+  newsletter opt-in checkbox
+- Every input has a visible <label> connected with for/id — no placeholder-as-label
+- Checkbox wrapped in <fieldset> and <legend> so screen readers announce the group
+  before the checkbox itself
+- aria-required="true" on every required field
+- :focus-visible outlines on every input, select, textarea, and the submit button
+- Hidden success message div below the form, revealed by toggling an is-visible class
+- All visual styling and transitions for the success message handled in CSS — JavaScript
+  only adds/removes the class
+- Fully keyboard navigable: Tab moves through fields in logical order, Space toggles the
+  checkbox, Enter submits the form
+
+## HTML Decisions
+
+- Used aria-required="true" instead of the native required attribute, since native
+  required blocks form submission on empty fields and would prevent the custom JS
+  success-message logic from running during testing
+- Removed the empty placeholder option from the Subject select so a real option is
+  always selected by default, avoiding a non-choice being submitted
+- Used role="status" on the success message div so screen readers announce it
+  automatically when it becomes visible, without needing a separate aria-live attribute
+- Added a third file, form.js, alongside form.html and form.css — the brief's success
+  message requirement needs JavaScript, so HTML and CSS alone can't fully satisfy it
+
+## CSS Decisions
+
+- Used box-sizing: border-box globally, same reset applied since Day 6
+- Used rem units throughout for font sizes and spacing, base 16px, consistent with
+  Day 6 and Day 8 onward
+- Used a warm linen and sienna colour palette with named colours only, continuing the
+  no-hex-code approach from Day 9 Part B and Day 10
+- Used :focus-visible with outline and outline-offset on every interactive element so
+  keyboard focus is visible without affecting mouse users — same pattern as Day 6
+- Used accent-color on the checkbox so its checked state matches the sienna theme
+  without needing custom checkbox styling
+- Success message starts at opacity: 0 and max-height: 0, then transitions to visible
+  when JS adds is-visible — keeps all animation logic out of JavaScript
+
+## What I Would Improve
+
+- Add inline validation messages next to each field instead of relying only on
+  aria-required and browser defaults
+- Add a transition on the input border colour for focus and hover states, similar to
+  the button transitions noted back in Day 8 and Day 9 Part A
+- Use CSS custom properties for the sienna and linen palette since they repeat across
+  many rules — same improvement noted in Day 7, Day 9, and Day 10
+- Make the success message dismissible with a close button for better usability
