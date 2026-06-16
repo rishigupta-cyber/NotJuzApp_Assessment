@@ -408,3 +408,52 @@ with fieldset and legend, and the entire form is operable using only the keyboar
 - Use CSS custom properties for the sienna and linen palette since they repeat across
   many rules — same improvement noted in Day 7, Day 9, and Day 10
 - Make the success message dismissible with a close button for better usability
+
+
+# Day 12 Assessment — Build a Design Token System
+
+A refactor of the Day 9 products page CSS to use a design token system built entirely
+on CSS custom properties. Every hardcoded colour name, font size, and spacing value was
+replaced with a token defined in a single :root block. A separate tokens.html was built
+to display each token visually with its name, value, and purpose.
+
+## What's Included
+
+- Six colour tokens in :root — primary, accent, text, muted, background, and surface
+- Five font size tokens from font-size-sm at 0.85rem up to font-size-xl at 1.8rem
+- Five spacing tokens from space-xs at 5px up to space-xl at 40px
+- Every hardcoded value replaced with var() so a single token change cascades through the entire page
+- tokens.html showing each token as a visual swatch or bar with its name, value, and purpose
+- Card titles corrected from h3 to h2 to fix the heading hierarchy error flagged in the Day 9 review
+- Class names updated to card-grid, product-card, card-content, and add-btn to make the structure clearly distinct
+
+## HTML Decisions
+
+- Fixed the heading hierarchy by changing card titles from h3 to h2 since the page already
+  has an h1 — h3 directly under h1 skips a level which causes a W3C warning
+- Updated class names across the page so they describe what the element is rather than
+  what it looks like — product-card is clearer than item, add-btn is clearer than btn
+- Added HTML comments at key structural points to explain the grid layout and card structure
+
+## CSS Decisions
+
+- Defined all tokens in :root so they are globally available and changing one value
+  cascades through every rule that references it via var()
+- Named tokens semantically — --color-primary instead of --color-steelblue — so the
+  token describes its role not its appearance, making it easier to retheme later
+- Used --color-surface for card backgrounds and --color-background for the page so the
+  two levels of white are clearly separated in purpose
+- Kept the spacing scale consistent with the visual weight of the page — space-xs for
+  tight internal gaps, space-xl for outer horizontal padding
+- The specificity fix from Day 9 is preserved — .card-content .price is more specific
+  than .card-content p so the tomato colour overrides gray without !important
+
+## What I Would Improve
+
+- Add transition on button hover using a token so the timing is also part of the system
+- Add a --color-price token for the tomato price colour since it is currently the only
+  hardcoded colour value remaining in the file
+- Extend the token system to cover border-radius and box-shadow values which are still
+  hardcoded at 8px and 2px 2px 10px respectively
+- Add a dark mode block using prefers-color-scheme that swaps the surface and background
+  tokens so the whole page themes automatically without touching any other rule
