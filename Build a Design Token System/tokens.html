@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Tokens</title>
+    <style>
+        :root {
+            --color-primary: steelblue;
+            --color-accent: royalblue;
+            --color-text: darkslategray;
+            --color-muted: gray;
+            --color-background: whitesmoke;
+            --color-surface: white;
+
+            --font-size-sm: 0.85rem;
+            --font-size-base: 0.9rem;
+            --font-size-md: 1rem;
+            --font-size-lg: 1.1rem;
+            --font-size-xl: 1.8rem;
+
+            --space-xs: 5px;
+            --space-sm: 12px;
+            --space-md: 20px;
+            --space-lg: 30px;
+            --space-xl: 40px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--color-background);
+            font-family: Arial, sans-serif;
+            color: var(--color-text);
+            padding: var(--space-lg);
+        }
+
+        h1 {
+            font-size: var(--font-size-xl);
+            margin-bottom: var(--space-lg);
+            color: var(--color-text);
+        }
+
+        h2 {
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--space-md);
+            margin-top: var(--space-lg);
+            border-bottom: 2px solid var(--color-primary);
+            padding-bottom: var(--space-xs);
+            color: var(--color-text);
+        }
+
+        .token-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+
+        .token-card {
+            background-color: var(--color-surface);
+            border-radius: 8px;
+            padding: var(--space-md);
+            box-shadow: 2px 2px 8px lightgray;
+            min-width: 200px;
+        }
+
+        .color-swatch {
+            width: 100%;
+            height: 60px;
+            border-radius: 5px;
+            margin-bottom: var(--space-sm);
+            border: 1px solid lightgray;
+        }
+
+        .token-name {
+            font-size: var(--font-size-sm);
+            font-weight: bold;
+            color: var(--color-text);
+            margin-bottom: 4px;
+        }
+
+        .token-value {
+            font-size: var(--font-size-sm);
+            color: var(--color-muted);
+            margin-bottom: 4px;
+        }
+
+        .token-purpose {
+            font-size: var(--font-size-sm);
+            color: var(--color-primary);
+        }
+
+        .font-sample {
+            background-color: var(--color-surface);
+            border-radius: 8px;
+            padding: var(--space-md);
+            box-shadow: 2px 2px 8px lightgray;
+            margin-bottom: var(--space-sm);
+        }
+
+        .space-sample {
+            background-color: var(--color-surface);
+            border-radius: 8px;
+            padding: var(--space-md);
+            box-shadow: 2px 2px 8px lightgray;
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-sm);
+        }
+
+        .space-bar {
+            background-color: var(--color-primary);
+            height: 16px;
+            border-radius: 3px;
+        }
+
+        .space-label {
+            font-size: var(--font-size-sm);
+            color: var(--color-muted);
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Design Tokens — Product Store</h1>
+
+<h2>Colour Tokens</h2>
+<div class="token-group">
+
+    <div class="token-card">
+        <div class="color-swatch" style="background-color: steelblue;"></div>
+        <p class="token-name">--color-primary</p>
+        <p class="token-value">steelblue</p>
+        <p class="token-purpose">Header, buttons, links</p>
+    </div>
+
+    <div class="token-card">
+        <div class="color-swatch" style="background-color: royalblue;"></div>
+        <p class="token-name">--color-accent</p>
+        <p class="token-value">royalblue</p>
+        <p class="token-purpose">Hover states</p>
+    </div>
+
+    <div class="token-card">
+        <div class="color-swatch" style="background-color: darkslategray;"></div>
+        <p class="token-name">--color-text</p>
+        <p class="token-value">darkslategray</p>
+        <p class="token-purpose">Headings and body text</p>
+    </div>
+
+    <div class="token-card">
+        <div class="color-swatch" style="background-color: gray;"></div>
+        <p class="token-name">--color-muted</p>
+        <p class="token-value">gray</p>
+        <p class="token-purpose">Secondary text, descriptions</p>
+    </div>
+
+    <div class="token-card">
+        <div class="color-swatch" style="background-color: whitesmoke;"></div>
+        <p class="token-name">--color-background</p>
+        <p class="token-value">whitesmoke</p>
+        <p class="token-purpose">Page background</p>
+    </div>
+
+    <div class="token-card">
+        <div class="color-swatch" style="background-color: white; border: 1px solid lightgray;"></div>
+        <p class="token-name">--color-surface</p>
+        <p class="token-value">white</p>
+        <p class="token-purpose">Card backgrounds</p>
+    </div>
+
+</div>
+
+<h2>Font Size Tokens</h2>
+
+<div class="font-sample">
+    <p class="token-name">--font-size-sm &nbsp; 0.85rem</p>
+    <p style="font-size: 0.85rem; color: gray; margin-top: 6px;">Used for small labels and secondary info</p>
+</div>
+
+<div class="font-sample">
+    <p class="token-name">--font-size-base &nbsp; 0.9rem</p>
+    <p style="font-size: 0.9rem; color: gray; margin-top: 6px;">Used for body text, descriptions, buttons</p>
+</div>
+
+<div class="font-sample">
+    <p class="token-name">--font-size-md &nbsp; 1rem</p>
+    <p style="font-size: 1rem; color: gray; margin-top: 6px;">Used for price and standard text</p>
+</div>
+
+<div class="font-sample">
+    <p class="token-name">--font-size-lg &nbsp; 1.1rem</p>
+    <p style="font-size: 1.1rem; color: gray; margin-top: 6px;">Used for card headings</p>
+</div>
+
+<div class="font-sample">
+    <p class="token-name">--font-size-xl &nbsp; 1.8rem</p>
+    <p style="font-size: 1.8rem; color: gray; margin-top: 6px;">Used for page heading</p>
+</div>
+
+<h2>Spacing Tokens</h2>
+
+<div class="space-sample">
+    <div class="space-bar" style="width: 5px;"></div>
+    <p class="space-label"><strong>--space-xs</strong> &nbsp; 5px &nbsp; — tight gaps, small margins</p>
+</div>
+
+<div class="space-sample">
+    <div class="space-bar" style="width: 12px;"></div>
+    <p class="space-label"><strong>--space-sm</strong> &nbsp; 12px &nbsp; — card padding, nav gap</p>
+</div>
+
+<div class="space-sample">
+    <div class="space-bar" style="width: 20px;"></div>
+    <p class="space-label"><strong>--space-md</strong> &nbsp; 20px &nbsp; — grid gap, section padding</p>
+</div>
+
+<div class="space-sample">
+    <div class="space-bar" style="width: 30px;"></div>
+    <p class="space-label"><strong>--space-lg</strong> &nbsp; 30px &nbsp; — page heading padding</p>
+</div>
+
+<div class="space-sample">
+    <div class="space-bar" style="width: 40px;"></div>
+    <p class="space-label"><strong>--space-xl</strong> &nbsp; 40px &nbsp; — horizontal page padding</p>
+</div>
+
+</body>
+</html>
