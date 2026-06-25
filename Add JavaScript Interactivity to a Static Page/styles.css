@@ -1,0 +1,620 @@
+/* ============================================================
+   styles.css — Spice & Stone  |  Day 13
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   RESET & BASE
+   ---------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: cursive;
+  margin: 0;
+  padding: 0;
+  background-color: linen;
+  color: sienna;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+/* ----------------------------------------------------------
+   DARK MODE  (Stretch Goal 5)
+   JS adds/removes .dark-mode on document.body
+   ---------------------------------------------------------- */
+body.dark-mode {
+  background-color: #1a1008;
+  color: #f5deb3;
+}
+
+body.dark-mode .nav {
+  background-color: #0d0804;
+}
+
+body.dark-mode .hero {
+  background-color: #2b1a0a;
+}
+
+body.dark-mode .hero h1 {
+  background-color: #b8460a;
+}
+
+body.dark-mode .menu-tabs-section,
+body.dark-mode .hours {
+  background-color: #261508;
+}
+
+body.dark-mode .tab-btn {
+  background-color: #3b2010;
+  color: #f5deb3;
+  border-color: #7a4010;
+}
+
+body.dark-mode .tab-btn.active {
+  background-color: chocolate;
+  color: white;
+}
+
+body.dark-mode .card {
+  background-color: #2e1a09;
+  box-shadow: 0 2px 6px #000;
+}
+
+body.dark-mode .about {
+  background-color: #1a1008;
+}
+
+body.dark-mode .booking {
+  background-color: #3b1f08;
+}
+
+body.dark-mode .booking-form input,
+body.dark-mode .booking-form textarea,
+body.dark-mode .booking-form select {
+  background-color: #2e1a09;
+  color: #f5deb3;
+  border-color: #7a4010;
+}
+
+body.dark-mode footer {
+  background-color: #0d0804;
+}
+
+
+/* ----------------------------------------------------------
+   NAV  (updated: flex, nav-link highlights, theme toggle)
+   ---------------------------------------------------------- */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.5rem;
+  background-color: saddlebrown;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.nav-link {
+  color: #f5deb3;
+  text-decoration: none;
+  font-size: 0.95rem;
+  padding: 0.25rem 0.5rem;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s;
+}
+
+/* IntersectionObserver adds .nav-active via JS (Stretch 6) */
+.nav-link.nav-active,
+.nav-link:hover {
+  border-bottom-color: darkorange;
+  color: white;
+}
+
+.nav-link:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 2px;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Theme toggle button */
+#theme-toggle {
+  background: transparent;
+  border: 1px solid #f5deb3;
+  color: #f5deb3;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
+}
+
+#theme-toggle:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+#theme-toggle:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 2px;
+}
+
+.nav-cta {
+  background-color: darkorange;
+  color: white;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  font-size: 0.95rem;
+  display: inline-block;
+}
+
+.nav-cta:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 2px;
+}
+
+/* Mobile: hide nav-links below 375px (spec breakpoint) */
+@media (max-width: 375px) {
+  .nav-links {
+    display: none;
+  }
+  .nav {
+    justify-content: flex-end;
+  }
+}
+
+
+/* ----------------------------------------------------------
+   HERO
+   ---------------------------------------------------------- */
+.hero {
+  text-align: center;
+  padding: 0.3125rem;
+  background-color: chocolate;
+  color: white;
+}
+
+.hero img {
+  width: 95%;
+  height: 32.5rem;
+  object-fit: cover;
+  display: inline-block;
+}
+
+.hero h1 {
+  font-size: 3.125rem;
+  margin: 0.3125rem 0 1.25rem 0;
+  background-color: darkorange;
+}
+
+.hero p {
+  font-size: 1.125rem;
+  margin: 0.125rem 0 1.25rem 0;
+  font-style: italic;
+}
+
+
+/* ----------------------------------------------------------
+   TAB SWITCHER  (Option 4)
+   ---------------------------------------------------------- */
+.menu-tabs-section {
+  text-align: center;
+  padding: 3.125rem 1.25rem;
+  background-color: oldlace;
+}
+
+.menu-tabs-section > h2 {
+  font-size: 2.125rem;
+  margin-bottom: 1.25rem;
+}
+
+.tab-bar {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  background-color: #f5deb3;
+  border: 2px solid chocolate;
+  color: sienna;
+  padding: 0.5rem 1.25rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 4px 4px 0 0;
+  font-family: inherit;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.tab-btn.active {
+  background-color: chocolate;
+  color: white;
+  border-bottom-color: chocolate;
+}
+
+.tab-btn:hover:not(.active) {
+  background-color: burlywood;
+}
+
+.tab-btn:focus-visible {
+  outline: 3px solid saddlebrown;
+  outline-offset: 2px;
+}
+
+/* The tab panels use the existing .dishes grid style */
+.tab-panel.dishes {
+  /* override parent text-align so inline-block cards centre */
+  text-align: center;
+  padding: 0;
+  background-color: transparent;
+}
+
+
+/* ----------------------------------------------------------
+   DISH CARDS  (fixed: card-body wraps h3/p; icons added)
+   Heading fix: h3 is valid here because it is INSIDE
+   the section which has h2, so the outline is h1 > h2 > h3.
+   ---------------------------------------------------------- */
+.dishes {
+  text-align: center;
+  background-color: oldlace;
+}
+
+.card {
+  display: inline-block;
+  width: 19.4375rem;
+  margin: 1.4375rem;
+  background-color: white;
+  vertical-align: top;
+  box-shadow: 0 2px 6px tan;
+  position: relative;
+}
+
+.card:hover {
+  box-shadow: 0 4px 14px peru;
+}
+
+/* Feature icon badge on each card */
+.card-icon {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  font-size: 1.5rem;
+  background: rgba(255,255,255,0.85);
+  border-radius: 50%;
+  width: 2.25rem;
+  height: 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.card img {
+  width: 100%;
+  height: 10rem;
+  object-fit: cover;
+  display: block;
+}
+
+.card-body {
+  padding: 0.75rem;
+}
+
+.card-body h3 {
+  font-size: 1rem;
+  margin: 0 0 0.375rem 0;
+}
+
+.card-body .category {
+  color: gray;
+  font-size: 0.8125rem;
+  margin: 0 0 0.25rem 0;
+}
+
+.card-body .price {
+  color: chocolate;
+  font-weight: bold;
+  font-size: 0.9375rem;
+  margin: 0;
+}
+
+
+/* ----------------------------------------------------------
+   ABOUT
+   ---------------------------------------------------------- */
+.about {
+  padding: 3.125rem 2.5rem;
+  background-color: linen;
+  overflow: hidden;
+}
+
+.about img {
+  width: 28.5rem;
+  height: 16.875rem;
+  object-fit: cover;
+  float: left;
+  margin-right: 6.25rem;
+}
+
+.about-text h2 {
+  font-size: 2rem;
+  margin-top: 0;
+}
+
+.about-text p {
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+
+/* ----------------------------------------------------------
+   HOURS
+   ---------------------------------------------------------- */
+.hours {
+  padding: 3.125rem 1.25rem;
+  background-color: oldlace;
+  text-align: center;
+}
+
+.hours h2 {
+  font-size: 2.125rem;
+  margin-bottom: 1.25rem;
+}
+
+table {
+  margin: 0 auto;
+  border-collapse: separate;
+  width: 50rem;
+}
+
+th, td {
+  border: 1px solid chocolate;
+  padding: 0.75rem 1.5rem;
+  text-align: left;
+}
+
+th {
+  background-color: chocolate;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: linen;
+}
+
+
+/* ----------------------------------------------------------
+   BOOKING FORM
+   (password toggle + char counter + aria-required + required)
+   ---------------------------------------------------------- */
+.booking {
+  padding: 3.125rem 1.25rem;
+  background-color: chocolate;
+  color: white;
+  text-align: center;
+}
+
+.booking h2 {
+  font-size: 2.125rem;
+  margin-bottom: 0.625rem;
+}
+
+.booking-form {
+  display: inline-block;
+  text-align: left;
+  width: min(100%, 28rem);
+  margin-top: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  font-size: 0.95rem;
+  margin-bottom: 0.35rem;
+  font-weight: bold;
+}
+
+.booking-form input,
+.booking-form textarea,
+.booking-form select {
+  padding: 0.6rem 0.75rem;
+  font-size: 1rem;
+  border: 2px solid rgba(255,255,255,0.5);
+  background-color: rgba(255,255,255,0.15);
+  color: white;
+  font-family: inherit;
+  border-radius: 3px;
+}
+
+.booking-form input::placeholder,
+.booking-form textarea::placeholder {
+  color: rgba(255,255,255,0.6);
+}
+
+.booking-form input:focus-visible,
+.booking-form textarea:focus-visible,
+.booking-form select:focus-visible {
+  outline: 3px solid darkorange;
+  outline-offset: 2px;
+}
+
+/* Password field wrapper (input + toggle side by side) */
+.password-wrapper {
+  display: flex;
+  gap: 0.5rem;
+  align-items: stretch;
+}
+
+.password-wrapper input {
+  flex: 1;
+}
+
+#pwd-toggle {
+  background-color: darkorange;
+  color: white;
+  border: none;
+  padding: 0 0.9rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-family: inherit;
+  border-radius: 3px;
+  white-space: nowrap;
+  transition: background-color 0.2s;
+}
+
+#pwd-toggle:hover {
+  background-color: #c85a00;
+}
+
+#pwd-toggle:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 2px;
+}
+
+/* Character counter — Option 1 */
+.char-count {
+  font-size: 0.8rem;
+  margin-top: 0.3rem;
+  color: rgba(255,255,255,0.75);
+  transition: color 0.2s;
+}
+
+/* JS adds .over-limit when >300 chars */
+.char-count.over-limit {
+  color: #ff6b6b;
+  font-weight: bold;
+}
+
+/* Submit button */
+.submit-btn {
+  display: block;
+  width: 100%;
+  padding: 0.8rem;
+  background-color: darkorange;
+  color: white;
+  border: none;
+  font-size: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: background-color 0.2s;
+}
+
+.submit-btn:hover {
+  background-color: #c85a00;
+}
+
+.submit-btn:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 2px;
+}
+
+
+/* ----------------------------------------------------------
+   FOOTER
+   ---------------------------------------------------------- */
+footer {
+  background-color: sienna;
+  color: white;
+  text-align: center;
+  padding: 1.5rem;
+  line-height: 1.8;
+}
+
+footer address {
+  font-style: normal;
+}
+
+
+/* ----------------------------------------------------------
+   BACK TO TOP BUTTON  (Option 2)
+   Hidden by default; JS adds .visible after 200px scroll
+   ---------------------------------------------------------- */
+#back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: saddlebrown;
+  color: white;
+  border: none;
+  padding: 0.65rem 1rem;
+  font-size: 0.9rem;
+  font-family: inherit;
+  cursor: pointer;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  /* hidden by default */
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 200;
+}
+
+/* JS adds this class when scrollY > 200 */
+#back-to-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+#back-to-top:hover {
+  background-color: chocolate;
+}
+
+#back-to-top:focus-visible {
+  outline: 3px solid darkorange;
+  outline-offset: 2px;
+}
+
+
+/* ----------------------------------------------------------
+   RESPONSIVE  — spec breakpoint: 375px
+   ---------------------------------------------------------- */
+@media (max-width: 375px) {
+  .hero img {
+    height: 14rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .card {
+    width: 90%;
+    margin: 0.75rem auto;
+    display: block;
+  }
+
+  .about img {
+    float: none;
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  .booking-form {
+    width: 100%;
+  }
+}

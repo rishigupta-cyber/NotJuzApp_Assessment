@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spice & Stone</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+
+    <!-- ======================================================
+         NAV — Section links with data-section for JS highlight
+         Theme toggle button (no inline onclick)
+    ======================================================= -->
+    <nav class="nav" aria-label="Main navigation">
+      <div class="nav-links">
+        <a class="nav-link" href="#dishes"  data-section="dishes">Menu</a>
+        <a class="nav-link" href="#about"   data-section="about">About</a>
+        <a class="nav-link" href="#hours"   data-section="hours">Hours</a>
+        <a class="nav-link" href="#booking" data-section="booking">Book</a>
+      </div>
+      <div class="nav-actions">
+        <button id="theme-toggle" aria-label="Toggle dark mode">🌙 Dark Mode</button>
+        <a class="nav-cta" href="#booking">Book a Table</a>
+      </div>
+    </nav>
+
+
+    <!-- ======================================================
+         HERO
+    ======================================================= -->
+    <section class="hero" id="hero">
+      <img
+        src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1400"
+        alt="Warm restaurant interior with candlelit tables"
+      />
+      <h1>Spice &amp; Stone</h1>
+      <p>A family restaurant with love in every dish</p>
+    </section>
+
+
+    <!-- ======================================================
+         TAB SWITCHER — Option 4
+         Three tabs: Starters / Mains / Desserts
+    ======================================================= -->
+    <section class="menu-tabs-section" id="dishes" aria-label="Menu tabs">
+      <h2>Our Popular Dishes</h2>
+
+      <div class="tab-bar" role="tablist" aria-label="Dish categories">
+        <button
+          class="tab-btn active"
+          role="tab"
+          data-tab="tab-starters"
+          aria-selected="true"
+          aria-controls="tab-starters"
+        >🥟 Starters</button>
+        <button
+          class="tab-btn"
+          role="tab"
+          data-tab="tab-mains"
+          aria-selected="false"
+          aria-controls="tab-mains"
+        >🍛 Mains</button>
+        <button
+          class="tab-btn"
+          role="tab"
+          data-tab="tab-desserts"
+          aria-selected="false"
+          aria-controls="tab-desserts"
+        >🍮 Desserts</button>
+      </div>
+
+      <!-- Starters panel -->
+      <div id="tab-starters" class="tab-panel dishes" role="tabpanel">
+        <div class="card">
+          <span class="card-icon" aria-hidden="true">🥟</span>
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxBLwm1EKWWBrgnAsBdR4o5m3WebIGKFKUs2-sw3qBL5HshxXGTX2-EQa8Sktyw-lCh0ca0d5RwRKC5HlvpmWgdEvWUVoMhZES62p2SVsf&s=10"
+            alt="Golden Spring Rolls on a plate"
+          />
+          <div class="card-body">
+            <h3>Spring Rolls</h3>
+            <p class="category">Starter</p>
+            <p class="price">₹150</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <span class="card-icon" aria-hidden="true">🥗</span>
+          <img
+            src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400"
+            alt="Fresh garden salad"
+          />
+          <div class="card-body">
+            <h3>Garden Salad</h3>
+            <p class="category">Starter</p>
+            <p class="price">₹120</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mains panel -->
+      <div id="tab-mains" class="tab-panel dishes" role="tabpanel" hidden>
+        <div class="card">
+          <span class="card-icon" aria-hidden="true">🍜</span>
+          <img
+            src="https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400"
+            alt="Bowl of veg noodles"
+          />
+          <div class="card-body">
+            <h3>Veg Noodles</h3>
+            <p class="category">Chinese</p>
+            <p class="price">₹180</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <span class="card-icon" aria-hidden="true">🫕</span>
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTB7SqRuFJ9CLSEvtlGjpvZMnBFnKqdnLyzhh2cN3eCBErns_dEFBr_0le-0j6fKBOo7YPDUDrVfcOg6yTNibRJXxiqYKnJ9kVD9aVDRFIY&s=10"
+            alt="Rich Dal Makhani in a bowl"
+          />
+          <div class="card-body">
+            <h3>Dal Makhani</h3>
+            <p class="category">Main Course</p>
+            <p class="price">₹220</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <span class="card-icon" aria-hidden="true">🧆</span>
+          <img
+            src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=400"
+            alt="Creamy Paneer Butter Masala"
+          />
+          <div class="card-body">
+            <h3>Paneer Butter Masala</h3>
+            <p class="category">Main Course</p>
+            <p class="price">₹260</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Desserts panel -->
+      <div id="tab-desserts" class="tab-panel dishes" role="tabpanel" hidden>
+        <div class="card">
+          <span class="card-icon" aria-hidden="true">🍮</span>
+          <img
+            src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=400"
+            alt="Creamy Gulab Jamun dessert"
+          />
+          <div class="card-body">
+            <h3>Gulab Jamun</h3>
+            <p class="category">Dessert</p>
+            <p class="price">₹90</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <span class="card-icon" aria-hidden="true">🍨</span>
+          <img
+            src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?w=400"
+            alt="Mango Kulfi on stick"
+          />
+          <div class="card-body">
+            <h3>Mango Kulfi</h3>
+            <p class="category">Dessert</p>
+            <p class="price">₹110</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ======================================================
+         ABOUT
+    ======================================================= -->
+    <section class="about" id="about">
+      <img
+        src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600"
+        alt="Inside view of Spice and Stone restaurant"
+      />
+      <div class="about-text">
+        <h2>About Us</h2>
+        <p>
+          We are a family-run restaurant serving fresh vegetarian food since 1995.
+          Every dish is made with fresh ingredients and a whole lot of love.
+          Come hungry, leave happy.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- ======================================================
+         HOURS
+    ======================================================= -->
+    <section class="hours" id="hours">
+      <h2>Opening Hours</h2>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Day</th>
+            <th scope="col">Hours</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Monday – Friday</td>
+            <td>11:00 AM – 10:00 PM</td>
+          </tr>
+          <tr>
+            <td>Saturday</td>
+            <td>10:00 AM – 11:00 PM</td>
+          </tr>
+          <tr>
+            <td>Sunday</td>
+            <td>10:00 AM – 9:00 PM</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+
+    <!-- ======================================================
+         BOOKING — with password toggle + character counter
+    ======================================================= -->
+    <section id="booking" class="booking">
+      <h2>Book a Table</h2>
+      <p>Reserve your spot with us below.</p>
+
+      <div class="booking-form">
+
+        <div class="form-group">
+          <label for="guest-name">Full Name <span aria-hidden="true">*</span></label>
+          <input
+            type="text"
+            id="guest-name"
+            name="guest-name"
+            placeholder="Your name"
+            required
+            aria-required="true"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="guest-email">Email <span aria-hidden="true">*</span></label>
+          <input
+            type="email"
+            id="guest-email"
+            name="guest-email"
+            placeholder="you@example.com"
+            required
+            aria-required="true"
+          />
+        </div>
+
+        <!-- PASSWORD FIELD — Option 3 -->
+        <div class="form-group">
+          <label for="password">Create a PIN <span aria-hidden="true">*</span></label>
+          <div class="password-wrapper">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter a PIN"
+              required
+              aria-required="true"
+            />
+            <button
+              type="button"
+              id="pwd-toggle"
+              aria-label="Show password"
+            >👁️ Show</button>
+          </div>
+        </div>
+
+        <!-- TEXTAREA + CHARACTER COUNTER — Option 1 -->
+        <div class="form-group">
+          <label for="special-request">Special Request</label>
+          <textarea
+            id="special-request"
+            name="special-request"
+            rows="4"
+            placeholder="Any dietary preferences or special requests…"
+          ></textarea>
+          <span id="char-count" class="char-count">0 / 300 characters</span>
+        </div>
+
+        <div class="form-group">
+          <label for="guests">Number of Guests <span aria-hidden="true">*</span></label>
+          <select id="guests" name="guests" required aria-required="true">
+            <option value="">Select…</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5+">5+</option>
+          </select>
+        </div>
+
+        <button type="button" class="submit-btn">Confirm Reservation</button>
+      </div>
+    </section>
+
+
+    <!-- ======================================================
+         FOOTER
+    ======================================================= -->
+    <footer>
+      <address>123 Main Street, Kanpur, Uttar Pradesh</address>
+      <p>Phone: +91 98765 43210</p>
+    </footer>
+
+
+    <!-- ======================================================
+         BACK TO TOP BUTTON — Option 2
+         Hidden by default; JS adds .visible after 200px scroll
+    ======================================================= -->
+    <button id="back-to-top" aria-label="Back to top">↑ Top</button>
+
+
+    <!-- External JS — no inline onclick anywhere -->
+    <script src="app.js"></script>
+  </body>
+</html>
