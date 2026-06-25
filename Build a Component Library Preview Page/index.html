@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Component Library</title>
+    <link rel="stylesheet" href="components.css" />
+  </head>
+  <body>
+
+    <!-- ── Top navbar (component 5) ── -->
+    <header class="navbar" role="banner">
+      <a href="#" class="nav-logo">Forge UI</a>
+      <nav class="nav-links" id="nav-links" aria-label="Primary navigation">
+        <a href="#buttons">Buttons</a>
+        <a href="#forms">Forms</a>
+        <a href="#card">Card</a>
+        <a href="#alerts">Alerts</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <button
+        class="hamburger"
+        id="hamburger"
+        aria-controls="nav-links"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <div class="page-layout">
+
+      <!-- ── Sticky sidebar ── -->
+      <aside class="sidebar" aria-label="Section navigation">
+        <nav>
+          <p class="sidebar-heading">Components</p>
+          <ul>
+            <li><a href="#buttons">Buttons</a></li>
+            <li><a href="#forms">Form Fields</a></li>
+            <li><a href="#card">Card</a></li>
+            <li><a href="#alerts">Alerts</a></li>
+            <li><a href="#navbar">Navbar</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="content">
+
+        <!-- ── 1. Buttons ── -->
+        <section id="buttons" class="component-section">
+          <h2>Button Variants</h2>
+          <p class="section-desc">Four variants × four states.</p>
+
+          <div class="btn-grid">
+            <div class="btn-group">
+              <p class="label">Primary</p>
+              <button class="btn btn-primary">Default</button>
+              <button class="btn btn-primary btn-hover-demo">Hover</button>
+              <button class="btn btn-primary btn-focus-demo">Focus</button>
+              <button class="btn btn-primary" disabled>Disabled</button>
+            </div>
+            <div class="btn-group">
+              <p class="label">Secondary</p>
+              <button class="btn btn-secondary">Default</button>
+              <button class="btn btn-secondary btn-hover-demo">Hover</button>
+              <button class="btn btn-secondary btn-focus-demo">Focus</button>
+              <button class="btn btn-secondary" disabled>Disabled</button>
+            </div>
+            <div class="btn-group">
+              <p class="label">Danger</p>
+              <button class="btn btn-danger">Default</button>
+              <button class="btn btn-danger btn-hover-demo">Hover</button>
+              <button class="btn btn-danger btn-focus-demo">Focus</button>
+              <button class="btn btn-danger" disabled>Disabled</button>
+            </div>
+            <div class="btn-group">
+              <p class="label">Ghost</p>
+              <button class="btn btn-ghost">Default</button>
+              <button class="btn btn-ghost btn-hover-demo">Hover</button>
+              <button class="btn btn-ghost btn-focus-demo">Focus</button>
+              <button class="btn btn-ghost" disabled>Disabled</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── 2. Form Fields ── -->
+        <section id="forms" class="component-section">
+          <h2>Form Fields</h2>
+          <p class="section-desc">All inputs labelled and accessible.</p>
+
+          <form class="form-demo" novalidate>
+            <div class="field">
+              <label for="f-text">Full Name</label>
+              <input type="text" id="f-text" placeholder="Jane Doe" />
+            </div>
+
+            <div class="field">
+              <label for="f-email">Email</label>
+              <input type="email" id="f-email" placeholder="jane@example.com" />
+            </div>
+
+            <div class="field">
+              <label for="f-password">Password</label>
+              <input type="password" id="f-password" placeholder="••••••••" />
+            </div>
+
+            <div class="field">
+              <label for="f-select">Role</label>
+              <select id="f-select">
+                <option value="">Select a role</option>
+                <option>Designer</option>
+                <option>Developer</option>
+                <option>Product Manager</option>
+              </select>
+            </div>
+
+            <fieldset class="field-group">
+              <legend>Notify me about</legend>
+              <label class="check-label">
+                <input type="checkbox" name="notify" value="updates" />
+                Product updates
+              </label>
+              <label class="check-label">
+                <input type="checkbox" name="notify" value="news" />
+                Company news
+              </label>
+            </fieldset>
+
+            <fieldset class="field-group">
+              <legend>Preferred contact</legend>
+              <label class="check-label">
+                <input type="radio" name="contact" value="email" />
+                Email
+              </label>
+              <label class="check-label">
+                <input type="radio" name="contact" value="phone" />
+                Phone
+              </label>
+            </fieldset>
+          </form>
+        </section>
+
+        <!-- ── 3. Card ── -->
+        <section id="card" class="component-section">
+          <h2>Card Component</h2>
+          <p class="section-desc">Image, tag, title, excerpt, author, CTA.</p>
+
+          <div class="card">
+            <div class="card-img" role="img" aria-label="Article cover image"></div>
+            <div class="card-body">
+              <span class="card-tag">Design Systems</span>
+              <h3 class="card-title">Why tokens beat hard-coded values</h3>
+              <p class="card-excerpt">
+                A single change in your token file can ripple through every component.
+                Here's how to structure one that actually scales.
+              </p>
+              <div class="card-footer">
+                <div class="card-author">
+                  <div class="author-avatar" aria-hidden="true"></div>
+                  <span>Maya Chen</span>
+                </div>
+                <button class="btn btn-primary btn-sm">Read more</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── 4. Alerts ── -->
+        <section id="alerts" class="component-section">
+          <h2>Alert Variants</h2>
+          <p class="section-desc">Dismiss button uses JS to add a hidden class; CSS handles the fade.</p>
+
+          <div class="alert alert-info" role="alert">
+            <span class="alert-icon" aria-hidden="true">ℹ</span>
+            <p>Your session will expire in 10 minutes.</p>
+            <button class="alert-dismiss" aria-label="Dismiss alert">✕</button>
+          </div>
+
+          <div class="alert alert-success" role="alert">
+            <span class="alert-icon" aria-hidden="true">✓</span>
+            <p>Profile saved successfully.</p>
+            <button class="alert-dismiss" aria-label="Dismiss alert">✕</button>
+          </div>
+
+          <div class="alert alert-warning" role="alert">
+            <span class="alert-icon" aria-hidden="true">⚠</span>
+            <p>Storage is almost full. Consider removing old files.</p>
+            <button class="alert-dismiss" aria-label="Dismiss alert">✕</button>
+          </div>
+
+          <div class="alert alert-error" role="alert">
+            <span class="alert-icon" aria-hidden="true">✕</span>
+            <p>Payment failed. Please check your card details.</p>
+            <button class="alert-dismiss" aria-label="Dismiss alert">✕</button>
+          </div>
+        </section>
+
+        <!-- ── 5. Navbar reference ── -->
+        <section id="navbar" class="component-section">
+          <h2>Navigation Bar</h2>
+          <p class="section-desc">The sticky top bar above uses a hamburger toggle on mobile. Resize the window to see it.</p>
+        </section>
+
+        <!-- ── 6. FAQ Accordion ── -->
+        <section id="faq" class="component-section">
+          <h2>FAQ Accordion</h2>
+          <p class="section-desc">Click to expand. CSS max-height transition, no layout shift.</p>
+
+          <div class="accordion">
+
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">
+                What is a component library?
+                <span class="accordion-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="accordion-panel">
+                <p>A component library is a shared set of reusable UI building blocks — buttons, forms, cards — that keep a product's design consistent across every screen.</p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">
+                Why use CSS custom properties for tokens?
+                <span class="accordion-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="accordion-panel">
+                <p>Custom properties live in the cascade. Change one value at the root and every component that references it updates instantly — no find-and-replace needed.</p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">
+                How do I make an accordion accessible?
+                <span class="accordion-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="accordion-panel">
+                <p>Use a real <code>&lt;button&gt;</code> for each trigger and toggle <code>aria-expanded</code> between true and false as the panel opens and closes.</p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">
+                What files does this project use?
+                <span class="accordion-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="accordion-panel">
+                <p><code>index.html</code> holds the markup, <code>components.css</code> owns every style via tokens, and <code>components.js</code> handles the hamburger toggle, alert dismiss, and accordion — no inline handlers anywhere.</p>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </main>
+    </div>
+
+    <script src="components.js"></script>
+  </body>
+</html>
