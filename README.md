@@ -505,3 +505,101 @@ A full JavaScript interactivity pass added to the Day 5/6 Spice & Stone restaura
 - Add left/right arrow key support between tabs to follow the full ARIA tabs keyboard pattern, rather than relying on Tab key order alone
 - Check `prefers-color-scheme` as the initial default before falling back to `localStorage`, so first-time visitors with a system dark mode get a sensible starting theme
 - Move the hardcoded dark mode hex colours into CSS custom properties, continuing the token system from Day 12, instead of introducing a second hardcoded palette alongside the named-colour one
+
+
+# Day 14 Assessment — Build a "Live Profile Card" Generator
+
+A single-page live preview app where a form on one side updates a profile card on the other in real time. Built with a full CSS custom-property token system, with the card styled entirely through tokens and zero hard-coded colours or pixel values in the card rules.
+
+## What's Included
+
+- Form panel with Full Name, Role/Tagline, and a Short Bio textarea capped at 150 characters with a live counter beneath it
+- Accent colour dropdown with four named options — Indigo, Emerald, Rose, Amber
+- Preview card that updates instantly as the user types, with no submit button or page reload
+- Character counter that turns red once the bio gets within 20 characters of the limit
+- Re-themeable card — choosing a new accent recolours the heading, top border, avatar, and button together in one action
+- Entire colour, type, and spacing system defined as CSS custom properties in `:root`, with the card component referencing only `var(--card-accent)` for all of its colour
+- All behaviour in an external `script.js` using `addEventListener` only — no inline `onclick` or `oninput` anywhere in the markup
+
+## HTML Decisions
+
+- Used `maxlength="150"` on the textarea as a native hard limit, with `aria-describedby="bio-counter"` so screen readers announce the character count alongside the field
+- Used a single `<select>` with four `<option>` values (`indigo`, `emerald`, `rose`, `amber`) rather than radio buttons, since a dropdown is the more compact pattern for a single mutually-exclusive choice
+- Gave the preview card an `id="profile-card"` specifically so JavaScript can target it once for the `--card-accent` update, rather than re-querying multiple child elements
+- Marked `.card-avatar` with `aria-hidden="true"` since it's a decorative placeholder circle with no actual image or meaningful content
+- Used `<h1>` for the form heading and `<h2>` for "Live Preview", keeping the card's own `<h3>` for the name one level below — so the document outline stays sequential across both panels
+
+## CSS Decisions
+
+- Defined every colour, font size, spacing, radius, and shadow value as a token in `:root`, then built the rest of the file using only `var()` — the brief's "no hard-coded hex codes or pixel values" rule is enforced everywhere except the token block itself
+- Introduced a single `--card-accent` variable that defaults to `var(--accent-indigo)` and is the *only* colour reference inside `.profile-card`, `.card-name`, `.card-avatar`, and `.card-btn` — this is what makes a one-line JS update re-theme the whole card at once
+- Kept the four accent options (`--accent-indigo`, `--accent-emerald`, `--accent-rose`, `--accent-amber`) as separate named tokens so `--card-accent` can simply point at whichever one JS selects, instead of JS writing a raw colour string
+- Used `opacity: 0.25` on `.card-avatar` rather than a separate lighter colour token, so the avatar tints correctly with whatever accent is active without needing its own token
+- Used `flex-wrap: wrap` with `flex: 1 1 320px` / `flex: 1 1 280px` on the two panels so the layout sits side-by-side on desktop and stacks naturally as the viewport narrows, with a single `@media (max-width: 375px)` query forcing a column layout as a backstop
+- Used `:focus-visible` with `outline: 2px solid var(--card-accent)` on every form control and the button, so the focus colour itself stays in sync with whichever accent is currently selected
+
+## JavaScript Decisions
+
+- Cached every DOM reference once at the top of the script rather than re-querying inside each listener, since the same elements (`previewName`, `previewBio`, etc.) are written to on every keystroke
+- Used the `input` event (not `change`) on the name, role, and bio fields so the preview updates on every keystroke instead of waiting for blur
+- Updated preview text with `textContent` rather than `innerHTML`, since the values are plain user-typed strings with no need for HTML parsing
+- Used `bioInput.maxLength` directly from the DOM instead of hardcoding `150` a second time in JS, so the counter logic always matches whatever limit is set in the HTML
+- Built an `accentMap` object that maps each `<option>` value to a `var(--accent-x)` string, so the `change` listener can write `--card-accent` with a single `setProperty` call instead of branching on the selected value
+- Used `document.documentElement.style.setProperty("--card-accent", …)` rather than touching the card element's inline style directly, keeping the re-theme mechanism consistent with how the token is read everywhere else in the CSS
+
+## What I Would Improve
+
+- Default the textarea's placeholder text and counter to update together on page load, so a pre-filled bio (e.g. from a saved draft) would show the correct count immediately rather than only after the first keystroke
+- Add a `transition` on `--card-accent`-driven properties so switching accents fades smoothly instead of snapping instantly
+- Move the `len >= max - 20` warning threshold into a named constant or data attribute instead of a magic number, so the warning distance is easy to tune in one place
+- Add an empty-state class so the placeholder preview text (`"Your Name"`, `"Your bio will appear here."`) is visually styled as a placeholder (e.g. muted colour) rather than identical to real entered text
+
+
+# Day 15 Assessment — Build a Component Library Preview Page
+
+A single-page component library for a design agency, displaying six reusable components — buttons, form fields, a card, alerts, a navbar, and an FAQ accordion — behind a sticky sidebar nav. Built entirely on a CSS custom-property token system, with `components.js` handling only the three interactions that genuinely need JavaScript: the mobile hamburger toggle, alert dismissal, and the accordion.
+
+## What's Included
+
+- Sticky top navbar with a logo, link list, and a hamburger toggle that only appears on mobile
+- Sticky sidebar nav with anchor links to all six component sections
+- Four button variants (Primary, Secondary, Danger, Ghost), each shown in Default, Hover, Focus, and Disabled states side by side
+- Fully labelled, accessible form fields — text, email, password, select, a checkbox group in a `<fieldset>`, and a radio group in a second `<fieldset>`
+- Card component with image area, category tag, title, excerpt, author avatar, and a CTA button
+- Four alert variants (Info, Success, Warning, Error), each with an icon and a working dismiss button
+- FAQ accordion with four questions, each toggling open/closed with a CSS `max-height` transition
+- All three JS-driven interactions — hamburger, alert dismiss, accordion — built with `addEventListener` only, no inline handlers anywhere in the markup
+
+## HTML Decisions
+
+- Demonstrated hover and focus states as separate static buttons (`.btn-hover-demo`, `.btn-focus-demo`) alongside the real interactive ones, since the brief asks the page to *display* all four states at once rather than rely on the visitor hovering or tabbing through each button to see them
+- Used `aria-controls="nav-links"` and `aria-expanded="false"` on the hamburger button so its relationship to the menu and its open/closed state are both exposed to assistive technology before any JS runs
+- Wrapped the checkbox group and radio group each in their own `<fieldset>` with a `<legend>`, since both are a single logical choice-group and need to be announced as one unit rather than as unrelated inputs
+- Used `role="img"` with `aria-label="Article cover image"` on the card's image placeholder div, since it's a solid colour block standing in for a real photo and has no other way to convey meaning to screen readers
+- Used a real `<button>` for every accordion trigger rather than a `<div>` or `<a>`, so it's keyboard-operable and focusable by default with no extra `tabindex` needed
+- Kept heading order strict across sections — a single `<h2>` per component section, `<h3>` only for the card's own title — so the page outline never skips a level despite six very different components living on one page
+
+## CSS Decisions
+
+- Defined the entire palette, type scale, spacing scale, radius scale, and two shadow levels as tokens in `:root`, then referenced only `var()` throughout the rest of the file — including two extra layout-specific tokens, `--navbar-h` and `--sidebar-w`, so the sticky offset math has no magic numbers
+- Gave each alert variant three tokens — background, border, and text colour — instead of one shared colour reused three ways, since info/success/warning/error each need independent control without one variant's tint bleeding into another's text colour
+- Used `position: sticky` with `top: calc(var(--navbar-h) + var(--space-6))` on `.sidebar`, so the sidebar's sticking point is derived from the navbar's own height token rather than a hardcoded pixel guess
+- Animated the alert dismiss purely through `max-height`, `opacity`, `padding`, and `margin` transitioning together on the same `.hidden` class, so JS only ever toggles one class and CSS owns every part of the collapse
+- Used `max-height: 0` → `max-height: 200px` on `.accordion-panel.open` instead of `height: auto`, since `height` can't be transitioned to/from `auto` but a generous fixed `max-height` can, while still allowing the panel's real content height to determine what's actually visible
+- Rotated `.accordion-icon` with `transform: rotate(45deg)` when its trigger's `aria-expanded="true"`, turning a `+` into a `×` purely through CSS attribute-selector targeting rather than JS swapping the icon's text content
+- Single `@media (max-width: 375px)` query handles every responsive change at once — hiding `.nav-links` behind the hamburger, collapsing the sidebar to a static horizontal strip, and stacking `.page-layout` into a single column
+
+## JavaScript Decisions
+
+- Wrote the hamburger handler to toggle `.open` on `nav-links` and read the *result* of that toggle (`classList.toggle` returns a boolean) straight into `aria-expanded`, so the visual state and the accessible state can never fall out of sync from a copy-paste mismatch
+- Used `querySelectorAll` with `forEach` for both the alert dismiss buttons and the accordion triggers, since both components repeat several times on the page and a single delegated set-up avoids writing four/six nearly-identical listeners by hand
+- Used `btn.closest(".alert")` inside the dismiss handler rather than `btn.parentElement`, so the dismiss button stays correctly wired even if another wrapper element is ever added between the button and its alert container
+- Used `trigger.nextElementSibling` to find each accordion's panel instead of an `id`/`aria-controls` lookup, since the HTML structure guarantees the panel always immediately follows its trigger inside the same `.accordion-item`
+- Read `aria-expanded === "true"` as a string comparison (not a boolean check) since DOM attributes are always strings, then wrote the *inverse* of that boolean back to both `aria-expanded` and the `.open` class in the same two lines, keeping the accordion's visual and accessible state changes atomic
+
+## What I Would Improve
+
+- Add `aria-controls` linking each accordion trigger to its panel `id`, so the trigger-to-panel relationship is explicit in the accessibility tree rather than only positional
+- Close other open accordion panels when a new one opens, if a single-open-at-a-time behaviour is preferred over the current independent-toggle behaviour
+- Add a `transition` on the hamburger's three spans so they animate into an X shape when open, instead of the menu simply appearing with no icon feedback
+- Pull the four alert colour triads and the four button variant colours into a shared naming convention (e.g. `--color-{variant}-{bg|border|text}`) so adding a fifth alert or button variant later means adding one consistent token group rather than improvising a new pattern
