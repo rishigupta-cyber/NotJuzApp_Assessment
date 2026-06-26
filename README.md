@@ -457,3 +457,51 @@ to display each token visually with its name, value, and purpose.
   hardcoded at 8px and 2px 2px 10px respectively
 - Add a dark mode block using prefers-color-scheme that swaps the surface and background
   tokens so the whole page themes automatically without touching any other rule
+
+
+# Day 13 Assessment — Add JavaScript Interactivity to a Static Page
+
+A full JavaScript interactivity pass added to the Day 5/6 Spice & Stone restaurant page. All four required options were implemented — character counter, back-to-top button, password toggle, and a tab switcher — plus both stretch goals: a dark/light mode toggle persisted with `localStorage`, and a scroll-based nav highlight using `IntersectionObserver`.
+
+## What's Included
+
+- Character counter on the special request textarea that updates live and turns red past 300 characters
+- Back-to-top button that fades in after 200px of scroll and smooth-scrolls to the top on click
+- Password show/hide toggle on the PIN field that swaps the input `type` and updates the button label and `aria-label` together
+- Tab switcher with three panels (Starters, Mains, Desserts) using `role="tab"`, `aria-selected`, and the `hidden` attribute to manage visibility
+- Dark/light mode toggle that adds/removes `.dark-mode` on `document.body` and remembers the choice across reloads via `localStorage`
+- Nav links that highlight automatically as their matching section scrolls into view, using `IntersectionObserver` with a 0.4 threshold
+- Six interactions total, all wired through `querySelector`/`querySelectorAll` and `addEventListener` — zero inline `onclick` attributes anywhere
+- A single external `app.js`, with each feature wrapped in its own IIFE and guarded with an early `return` if its elements aren't on the page
+
+## HTML Decisions
+
+- Added `data-section` attributes to each nav link so the `IntersectionObserver` script can match a visible section back to its corresponding link without hardcoding IDs in JS
+- Used `type="button"` on the password toggle and tab buttons so they never accidentally submit the booking form or trigger native form behaviour
+- Paired the textarea with a `<span id="char-count">` directly below it rather than a `placeholder`, since the counter needs to stay visible while typing
+- Used `aria-selected` and `aria-controls` on the tab buttons and `role="tabpanel"` on the panels so the tab pattern is announced correctly, with JS only toggling the `hidden` attribute and the matching ARIA state together
+- Placed `#back-to-top` as a standalone fixed button outside the normal page flow, hidden by CSS by default rather than JS, so there's no flash of an unstyled visible button before JS runs
+
+## CSS Decisions
+
+- Kept all animation logic in CSS — `#back-to-top` and `.char-count` use `transition` and a toggled class (`.visible`, `.over-limit`) so JS only ever adds/removes a class, never touches inline styles
+- Scoped every dark mode override under `body.dark-mode` as descendant selectors (`.nav`, `.hero`, `.card`, etc.) so light mode styling stays untouched and there's a single switch point
+- Used `transition: background-color 0.3s ease, color 0.3s ease` on `body` so the dark mode switch fades smoothly instead of snapping
+- Styled `.tab-btn.active` and `.nav-link.nav-active` as plain classes so the JS only ever needs to add or remove one class name per interaction, keeping style decisions out of the script
+- Continued the `rem`-based sizing and `:focus-visible` outlines from Day 6 onward across every new interactive element — tabs, theme toggle, password toggle, and back-to-top button
+
+## JavaScript Decisions
+
+- Wrote each of the six features as its own self-contained IIFE so one missing element (e.g. no `#back-to-top` on a page) can't break the others — each function guards itself with `if (!el) return`
+- Used the `input` event rather than `change` on the textarea for the character counter, since `change` only fires on blur and wouldn't update the count live as the user types
+- Applied the saved theme preference from `localStorage` immediately on load, before attaching the click listener, so returning visitors don't see a flash of the wrong theme
+- Used a `scroll` listener checking `window.scrollY > 200` for the back-to-top button, and `window.scrollTo({ top: 0, behavior: 'smooth' })` for the click action
+- Toggled the password field's `type` between `password` and `text` and updated the button's text and `aria-label` in the same handler, so the visual state and the accessible name never drift out of sync
+- Used `IntersectionObserver` with `{ threshold: 0.4 }` instead of a scroll-position calculation, since it's the purpose-built API for "is this section currently visible" and avoids manual scroll-math
+
+## What I Would Improve
+
+- Throttle or debounce the scroll listener behind the back-to-top button — right now it runs on every scroll event with no rate limiting
+- Add left/right arrow key support between tabs to follow the full ARIA tabs keyboard pattern, rather than relying on Tab key order alone
+- Check `prefers-color-scheme` as the initial default before falling back to `localStorage`, so first-time visitors with a system dark mode get a sensible starting theme
+- Move the hardcoded dark mode hex colours into CSS custom properties, continuing the token system from Day 12, instead of introducing a second hardcoded palette alongside the named-colour one
