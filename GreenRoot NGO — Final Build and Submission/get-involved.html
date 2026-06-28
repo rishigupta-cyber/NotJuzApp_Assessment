@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GreenRoot | Get Involved</title>
+  <meta name="description" content="Volunteer, donate, or spread the word for GreenRoot. Sign up for a program in a couple of minutes.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="index.html" class="logo">🌱 GreenRoot</a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">
+        <span class="sr-only">Menu</span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <nav class="nav-links" id="navLinks" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="programs.html">Programs</a>
+        <a href="get-involved.html" class="active" aria-current="page">Get Involved</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container hero-content">
+        <h1>Get Involved</h1>
+        <p>Whatever time or skills you have, there's a place for them here.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Three ways to help</h2>
+        <div class="card-grid">
+          <article class="card">
+            <p class="card-icon" aria-hidden="true">🤝</p>
+            <h3>Volunteer</h3>
+            <p>Join a planting, clean-up, or workshop. Sign up below and we'll send the details.</p>
+            <a href="#volunteer-form" class="card-link">Sign up</a>
+          </article>
+          <article class="card">
+            <p class="card-icon" aria-hidden="true">💛</p>
+            <h3>Donate</h3>
+            <p>Donations cover saplings, tools, and workshop materials. Every amount helps a program run.</p>
+            <a href="mailto:hello@greenroot.org?subject=Donation%20Inquiry" class="card-link">Get in touch</a>
+          </article>
+          <article class="card">
+            <p class="card-icon" aria-hidden="true">📣</p>
+            <h3>Spread the Word</h3>
+            <p>Tell a neighbor, share a program with your community group, or just bring a friend along.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-alt" id="volunteer-form">
+      <div class="container">
+        <h2>Become a volunteer</h2>
+        <p class="form-hint">Fields marked * are required.</p>
+        <form id="volunteerForm">
+          <div class="form-group">
+            <label for="volName">Full name *</label>
+            <input type="text" id="volName" name="volName" required aria-required="true">
+          </div>
+          <div class="form-group">
+            <label for="volEmail">Email *</label>
+            <input type="email" id="volEmail" name="volEmail" required aria-required="true">
+          </div>
+          <fieldset>
+            <legend>Which program interests you? *</legend>
+            <div class="radio-option">
+              <input type="radio" id="interestTrees" name="interest" value="Tree Planting" required aria-required="true">
+              <label for="interestTrees">Tree Planting</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="interestCleanup" name="interest" value="Clean-Up Days">
+              <label for="interestCleanup">Clean-Up Days</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="interestWorkshops" name="interest" value="Workshops">
+              <label for="interestWorkshops">Workshops</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="interestUnsure" name="interest" value="Not sure yet">
+              <label for="interestUnsure">Not sure yet</label>
+            </div>
+          </fieldset>
+          <div class="form-group">
+            <label for="volMessage">Anything we should know?</label>
+            <textarea id="volMessage" name="volMessage" rows="4"></textarea>
+          </div>
+          <button type="submit" class="btn btn-accent">Sign me up</button>
+        </form>
+        <div id="volunteerSuccess" class="form-success" role="status">
+          <p>Thanks for signing up! Someone from our volunteer team will reach out within a few days with the next steps.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq">
+      <div class="container">
+        <h2>Frequently asked questions</h2>
+        <details>
+          <summary>Do I need experience to volunteer?</summary>
+          <p>No experience needed for any of our programs. Crew leads walk you through everything on the day.</p>
+        </details>
+        <details>
+          <summary>Can my company sponsor a tree-planting day?</summary>
+          <p>Yes, we run group plantings for businesses and schools. Email us and we'll put together a date that works.</p>
+        </details>
+        <details>
+          <summary>What should I bring to a clean-up day?</summary>
+          <p>Closed-toe shoes and clothes you don't mind getting dirty. We provide gloves, bags, and tools.</p>
+        </details>
+        <details>
+          <summary>Is there a minimum age to volunteer?</summary>
+          <p>Most programs welcome ages 12 and up with a guardian. Workshops are open to all ages.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <div>
+        <p class="logo">🌱 GreenRoot</p>
+        <p>Growing stronger communities, one root at a time.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="index.html">Home</a>
+        <a href="programs.html">Programs</a>
+        <a href="get-involved.html">Get Involved</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <address>
+        118 Willow Creek Road<br>
+        Maple Grove
+        <p><a href="mailto:hello@greenroot.org">hello@greenroot.org</a></p>
+      </address>
+    </div>
+    <p class="footer-bottom">© 2026 GreenRoot. All rights reserved.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
